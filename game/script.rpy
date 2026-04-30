@@ -18,12 +18,14 @@ label start:
     show atrium 1
     # call atrium
     # TODO: actually implement the script.
+    show screen game_overlay
+    # show screen HUD
     "You open your eyes to find that your plan worked. You have successfully made it to the hidden library."
-    show screen game_overlay
-    # Player returns here after closing inventory screen
-    show screen game_overlay
-    pause
     # show screen game_overlay
+    # Player returns here after closing inventory screen
+    # "This is to make sure a player can access their inventory at any time during the game."
+    # pause
+    jump atrium
     
     # "Inventory"
     # return
@@ -35,25 +37,37 @@ label start:
 
     # show eileen happy
 
+# TESTING PURPOSES
 label loop:
-    # call screen game_overlay
+#     # call screen game_overlay
     show screen game_overlay
     "What do you want to do?"
+    "This is to make sure a player can access their inventory at any time during the game."
     jump loop
 
     # TESTING PURPOSES ONLY
 screen game_overlay:
-    # modal True
-    frame align (0, 0) xsize 500:
-        textbutton "Inventory":
-            xalign 0.5
-            action Call("open_inventory") # opens inventory screen
-            # action Show("inventory_screen") # opens inventory screen
-    frame align (0.5, 0.5) xsize 500:
-        textbutton "Quit":
-            xalign 0.5
-            # action Return() # ends game
-            action Quit() # ends game
+    modal False
+    zorder 100
+    frame pos (0, 0) xsize 150 ysize 60:
+        # textbutton "Inventory":
+        # text "Inventory" xalign 0.5 yalign 0.5 size 30
+        # has hbox
+        imagebutton auto "inventory_button_%s.png" xsize 150 ysize 60:
+            focus_mask True
+            xpos 0 ypos 0
+            # xalign 0.0 yalign 0.0
+            # xalign 0.5 yalign 0.5
+            # padding (10,10,10,10)
+            idle "components/inventory/images/inventory_button.png"
+            hover "components/inventory/images/inventory_button_hover.png"
+            # action Call("open_inventory") # opens inventory screen
+            action Show("inventory_alt") # opens inventory screen
+    # frame align (0.5, 0.5) xsize 500:
+    #     textbutton "Quit":
+    #         xalign 0.5
+    #         # action Return() # ends game
+    #         action Quit() # ends game
 # $ renpy.pause()
 # pause
 # return

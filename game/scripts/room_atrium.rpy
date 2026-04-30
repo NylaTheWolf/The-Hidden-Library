@@ -1,6 +1,7 @@
 label atrium:
     image bg atrium = Transform("atrium 1", zoom=.75)
     scene bg atrium
+    # show screen game_overlay
     "holy shit what a crazy library"
 
     menu: #note for menus, we could implement context sensitive direciton based on where the player entered from, but only if we have time
