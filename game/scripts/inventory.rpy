@@ -20,6 +20,8 @@ init python:
 label open_inventory:
     hide screen game_overlay
     call screen inventory_screen
+    # "Back to the game"
+    # return
     # "Your Inventory"
     # return
     # $ renpy.pause()
@@ -28,11 +30,14 @@ screen inventory_screen:
     modal True
     zorder 10
     text "Inventory" xalign 0.5 yalign 0.1 size 50
-    textbutton "Close" xalign 0.5 yalign 0.9 action Hide("inventory_screen") # closes inventory screen
-    text "success" xalign 0.5 yalign 0.5 size 30
+    textbutton "Close" xalign 0.5 yalign 0.9 action Return() # closes inventory screen
+    # text "success" xalign 0.5 yalign 0.5 size 30
     vpgrid:
         cols 2
+        spacing 5
+        rows 10
         for i in inventory:
             textbutton i.name:
                 xalign 1 yalign 1
-                action Return(i)
+                # acti  # shows item info screen when item is clicked
+                action Return()

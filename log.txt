@@ -1,281 +1,17 @@
-2026-04-27 19:29:35 UTC
+2026-04-30 19:25:11 UTC
 macOS-26.2-arm64-arm-64bit
 Ren'Py 8.5.2.26010301
 
-Early init took 31 ms
-Loading error handling took 29 ms
-Loading script took 492 ms
-Loading save slot metadata took 13 ms
+Early init took 34 ms
+Loading error handling took 28 ms
+Loading script took 559 ms
+Loading save slot metadata took 17 ms
 Loading persistent took 0 ms
-Running init code took 27 ms
-Loading analysis data took 4 ms
+Running init code took 55 ms
+Loading analysis data took 3 ms
 Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 2 ms
-Backing up script files to '/Users/nyla/Library/RenPy/backups/The Hidden Library':
-Dump and make backups took 23 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 19 ms
-DPI scale factor: 1.000000
-Creating interface object took 0 ms
-Init translation took 0 ms
-Cleaning stores took 0 ms
-Load screen analysis took 0 ms
-Analyze screens took 5 ms
-Save screen analysis took 8 ms
-Save pyanalysis took 3 ms
-Save bytecode took 17 ms
-Running _start took 1 ms
-Interface start took 372 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1512, 982)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Apple'
-Renderer: 'Apple M1 Pro'
-Version: '2.1 Metal - 90.5'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1512, 'current_h': 982, 'refresh_rate': 120, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1410, 793) drawable=(2820, 1586)
-Maximum texture size: 4096x4096
-
-Full traceback:
-  File "game/script.rpy", line 21, in script call
-    call screen game_overlay
-  File "game/scripts/inventory.rpy", line 22, in script
-    call screen inventory_screen
-  File "renpy/ast.py", line 2241, in execute
-    self.call("execute")
-    ~~~~~~~~~^^^^^^^^^^^
-  File "renpy/ast.py", line 2195, in call
-    return renpy.statements.call(method, parsed, *args, **kwargs)
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/statements.py", line 381, in call
-    return method(parsed, *args, **kwargs)
-           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/common/000statements.rpy", line 695, in execute_call_screen
-    store._return = renpy.call_screen(name, *args, **kwargs)
-                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/exports/statementexports.py", line 348, in call_screen
-    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
-         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/ui.py", line 306, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/core.py", line 2154, in interact
-    repeat, rv = self.interact_core(
-                 ~~~~~~~~~~~~~~~~~~^
-        preloads=preloads,
-        ^^^^^^^^^^^^^^^^^^
-    ...<4 lines>...
-        **kwargs,
-        ^^^^^^^^^
-    )
-    ^
-  File "renpy/display/core.py", line 2700, in interact_core
-    root_widget.visit_all(lambda d: d.per_interact())
-    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/displayable.py", line 457, in visit_all
-    d.visit_all(callback, seen)
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
-  File "renpy/display/displayable.py", line 457, in visit_all
-    d.visit_all(callback, seen)
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
-  File "renpy/display/displayable.py", line 457, in visit_all
-    d.visit_all(callback, seen)
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
-  File "renpy/display/screen.py", line 508, in visit_all
-    self.child.visit_all(callback, seen=None)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/displayable.py", line 457, in visit_all
-    d.visit_all(callback, seen)
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
-  File "renpy/display/displayable.py", line 457, in visit_all
-    d.visit_all(callback, seen)
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
-  File "renpy/display/displayable.py", line 448, in visit_all
-    for d in self.visit():
-             ~~~~~~~~~~^^ 
-  File "renpy/display/layout.py", line 1357, in visit
-    self.style._visit_window(rv.append)
-    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
-  File "renpy/style.pyx", line 541, in renpy.style.StyleCore._visit_window
-  File "renpy/style.pyx", line 528, in renpy.style.StyleCore._get_unoffset
-  File "renpy/style.pyx", line 493, in renpy.style.StyleCore._get
-  File "renpy/style.pyx", line 717, in renpy.style.build_style
-  File "renpy/style.pyx", line 714, in renpy.style.build_style
-  File "tmp/gen3-static/style_functions.pyx", line 2087, in style_functions.xysize_property
-  File "src/style_common.pxi", line 30, in style_functions.index_0
-TypeError: 'int' object is not subscriptable
-
-While processing the xysize property of anonymous style:
-  File "game/script.rpy", line 21, in script call
-    call screen game_overlay
-  File "game/scripts/inventory.rpy", line 22, in script
-    call screen inventory_screen
-  File "renpy/style.pyx", line 541, in renpy.style.StyleCore._visit_window
-  File "renpy/style.pyx", line 528, in renpy.style.StyleCore._get_unoffset
-  File "renpy/style.pyx", line 493, in renpy.style.StyleCore._get
-  File "renpy/style.pyx", line 717, in renpy.style.build_style
-  File "renpy/style.pyx", line 714, in renpy.style.build_style
-  File "tmp/gen3-static/style_functions.pyx", line 2087, in style_functions.xysize_property
-  File "src/style_common.pxi", line 30, in style_functions.index_0
-TypeError: 'int' object is not subscriptable
-
-Full traceback:
-  File "game/script.rpy", line 21, in script call
-    call screen game_overlay
-  File "game/scripts/inventory.rpy", line 22, in script
-    call screen inventory_screen
-  File "renpy/ast.py", line 2241, in execute
-    self.call("execute")
-    ~~~~~~~~~^^^^^^^^^^^
-  File "renpy/ast.py", line 2195, in call
-    return renpy.statements.call(method, parsed, *args, **kwargs)
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/statements.py", line 381, in call
-    return method(parsed, *args, **kwargs)
-           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/common/000statements.rpy", line 695, in execute_call_screen
-    store._return = renpy.call_screen(name, *args, **kwargs)
-                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/exports/statementexports.py", line 348, in call_screen
-    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
-         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/ui.py", line 306, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/core.py", line 2154, in interact
-    repeat, rv = self.interact_core(
-                 ~~~~~~~~~~~~~~~~~~^
-        preloads=preloads,
-        ^^^^^^^^^^^^^^^^^^
-    ...<4 lines>...
-        **kwargs,
-        ^^^^^^^^^
-    )
-    ^
-  File "renpy/display/core.py", line 2700, in interact_core
-    root_widget.visit_all(lambda d: d.per_interact())
-    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/displayable.py", line 457, in visit_all
-    d.visit_all(callback, seen)
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
-  File "renpy/display/displayable.py", line 457, in visit_all
-    d.visit_all(callback, seen)
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
-  File "renpy/display/displayable.py", line 457, in visit_all
-    d.visit_all(callback, seen)
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
-  File "renpy/display/screen.py", line 508, in visit_all
-    self.child.visit_all(callback, seen=None)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/displayable.py", line 457, in visit_all
-    d.visit_all(callback, seen)
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
-  File "renpy/display/displayable.py", line 457, in visit_all
-    d.visit_all(callback, seen)
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
-  File "renpy/display/displayable.py", line 448, in visit_all
-    for d in self.visit():
-             ~~~~~~~~~~^^ 
-  File "renpy/display/layout.py", line 1357, in visit
-    self.style._visit_window(rv.append)
-    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
-  File "renpy/style.pyx", line 541, in renpy.style.StyleCore._visit_window
-  File "renpy/style.pyx", line 528, in renpy.style.StyleCore._get_unoffset
-  File "renpy/style.pyx", line 493, in renpy.style.StyleCore._get
-  File "renpy/style.pyx", line 717, in renpy.style.build_style
-  File "renpy/style.pyx", line 714, in renpy.style.build_style
-  File "tmp/gen3-static/style_functions.pyx", line 2087, in style_functions.xysize_property
-  File "src/style_common.pxi", line 30, in style_functions.index_0
-TypeError: 'int' object is not subscriptable
-
-While processing the xysize property of anonymous style:
-  File "game/script.rpy", line 21, in script call
-    call screen game_overlay
-  File "game/scripts/inventory.rpy", line 22, in script
-    call screen inventory_screen
-  File "renpy/style.pyx", line 541, in renpy.style.StyleCore._visit_window
-  File "renpy/style.pyx", line 528, in renpy.style.StyleCore._get_unoffset
-  File "renpy/style.pyx", line 493, in renpy.style.StyleCore._get
-  File "renpy/style.pyx", line 717, in renpy.style.build_style
-  File "renpy/style.pyx", line 714, in renpy.style.build_style
-  File "tmp/gen3-static/style_functions.pyx", line 2087, in style_functions.xysize_property
-  File "src/style_common.pxi", line 30, in style_functions.index_0
-TypeError: 'int' object is not subscriptable
-Resetting cache.
-Early init took 7 ms
-Loading error handling took 14 ms
-Loading script took 57 ms
-Loading save slot metadata took 7 ms
-Loading persistent took 0 ms
-Running init code took 19 ms
-Loading analysis data took 6 ms
-Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 3 ms
-Backing up script files to '/Users/nyla/Library/RenPy/backups/The Hidden Library':
-Dump and make backups took 25 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 31 ms
-DPI scale factor: 1.000000
-Creating interface object took 0 ms
-Init translation took 0 ms
-Cleaning stores took 0 ms
-Load screen analysis took 0 ms
-Analyze screens took 7 ms
-Save screen analysis took 8 ms
-Save pyanalysis took 0 ms
-Save bytecode took 0 ms
-Running _start took 1 ms
-Interface start took 197 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1512, 982)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Apple'
-Renderer: 'Apple M1 Pro'
-Version: '2.1 Metal - 90.5'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1512, 'current_h': 982, 'refresh_rate': 120, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1410, 793) drawable=(2820, 1586)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 7 ms
-Loading error handling took 16 ms
-Loading script took 62 ms
-Loading save slot metadata took 7 ms
-Loading persistent took 0 ms
-
-File "game/scripts/inventory.rpy", line 35: 'size' is not a keyword argument or valid child of the textbutton statement.
-    textbutton i.name xalign 0.5 yalign 0.5 size 30:
-                                                ^
-DPI scale factor: 1.000000
-Interface start took 84 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1512, 982)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Apple'
-Renderer: 'Apple M1 Pro'
-Version: '2.1 Metal - 90.5'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1512, 'current_h': 982, 'refresh_rate': 120, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1410, 793) drawable=(2820, 1586)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 3 ms
-Loading error handling took 15 ms
-Loading script took 58 ms
-Loading save slot metadata took 6 ms
-Loading persistent took 0 ms
-Running init code took 22 ms
-Loading analysis data took 6 ms
-Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 3 ms
-Backing up script files to '/Users/nyla/Library/RenPy/backups/The Hidden Library':
-Dump and make backups took 24 ms
+Reloading save slot metadata took 5 ms
+Dump and make backups took 29 ms
 Cleaning cache took 0 ms
 Making clean stores took 0 ms
 Initial gc took 22 ms
@@ -283,13 +19,13 @@ DPI scale factor: 1.000000
 Creating interface object took 0 ms
 Init translation took 0 ms
 Cleaning stores took 0 ms
-Load screen analysis took 0 ms
-Analyze screens took 6 ms
-Save screen analysis took 7 ms
-Save pyanalysis took 2 ms
-Save bytecode took 1 ms
-Running _start took 0 ms
-Interface start took 162 ms
+Load screen analysis took 12 ms
+Analyze screens took 1 ms
+Save screen analysis took 0 ms
+Save pyanalysis took 0 ms
+Save bytecode took 21 ms
+Running _start took 1 ms
+Interface start took 441 ms
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1512, 982)
@@ -301,124 +37,32 @@ Version: '2.1 Metal - 90.5'
 Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1512, 'current_h': 982, 'refresh_rate': 120, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
 Screen sizes: virtual=(1920, 1080) physical=(1410, 793) drawable=(2820, 1586)
 Maximum texture size: 4096x4096
-
-Full traceback:
-  File "game/script.rpy", line 21, in script call
-    call screen game_overlay
-  File "game/scripts/inventory.rpy", line 22, in script
-    call screen inventory_screen
-  File "renpy/ast.py", line 2241, in execute
-    self.call("execute")
-    ~~~~~~~~~^^^^^^^^^^^
-  File "renpy/ast.py", line 2195, in call
-    return renpy.statements.call(method, parsed, *args, **kwargs)
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/statements.py", line 381, in call
-    return method(parsed, *args, **kwargs)
-           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/common/000statements.rpy", line 695, in execute_call_screen
-    store._return = renpy.call_screen(name, *args, **kwargs)
-                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/exports/statementexports.py", line 348, in call_screen
-    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
-         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/ui.py", line 306, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/core.py", line 2154, in interact
-    repeat, rv = self.interact_core(
-                 ~~~~~~~~~~~~~~~~~~^
-        preloads=preloads,
-        ^^^^^^^^^^^^^^^^^^
-    ...<4 lines>...
-        **kwargs,
-        ^^^^^^^^^
-    )
-    ^
-  File "renpy/display/core.py", line 2700, in interact_core
-    root_widget.visit_all(lambda d: d.per_interact())
-    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/displayable.py", line 457, in visit_all
-    d.visit_all(callback, seen)
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
-  File "renpy/display/displayable.py", line 457, in visit_all
-    d.visit_all(callback, seen)
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
-  File "renpy/display/displayable.py", line 457, in visit_all
-    d.visit_all(callback, seen)
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
-  File "renpy/display/screen.py", line 503, in visit_all
-    callback(self)
-    ~~~~~~~~^^^^^^
-  File "renpy/display/core.py", line 2700, in <lambda>
-    root_widget.visit_all(lambda d: d.per_interact())
-                                    ~~~~~~~~~~~~~~^^ 
-  File "renpy/display/screen.py", line 514, in per_interact
-    self.update()
-    ~~~~~~~~~~~^^
-  File "renpy/display/screen.py", line 715, in update
-    self.screen.function(**self.scope)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
-  File "game/scripts/inventory.rpy", line 27, in execute
-    screen inventory_screen:
-  File "game/scripts/inventory.rpy", line 27, in execute
-    screen inventory_screen:
-  File "game/scripts/inventory.rpy", line 33, in execute
-    vpgrid:
-  File "renpy/sl2/sldisplayables.py", line 351, in sl2vpgrid
-    vp = renpy.ui.vpgrid(**kwargs)
-         ~~~~~~~~~~~~~~~^^^^^^^^^^
-  File "renpy/ui.py", line 1204, in vpgrid
-    return viewport_common(_vpgrid, False, **properties)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/ui.py", line 1113, in viewport_common
-    return vpfunc(**properties)
-           ~~~~~~^^^^^^^^^^^^^^
-  File "renpy/ui.py", line 528, in __call__
-    w = self.function(*args, **keyword)
-        ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-  File "renpy/display/viewport.py", line 613, in __init__
-    raise Exception("A VPGrid must be given the rows or cols property.")
-Exception: A VPGrid must be given the rows or cols property.
-
-While running game code:
-  File "game/script.rpy", line 21, in script call
-    call screen game_overlay
-  File "game/scripts/inventory.rpy", line 22, in script
-    call screen inventory_screen
-  File "game/scripts/inventory.rpy", line 27, in execute
-    screen inventory_screen:
-  File "game/scripts/inventory.rpy", line 27, in execute
-    screen inventory_screen:
-  File "game/scripts/inventory.rpy", line 33, in execute
-    vpgrid:
-Exception: A VPGrid must be given the rows or cols property.
 Resetting cache.
-Early init took 4 ms
-Loading error handling took 9 ms
-Loading script took 64 ms
-Loading save slot metadata took 8 ms
+Early init took 7 ms
+Loading error handling took 18 ms
+Loading script took 90 ms
+Loading save slot metadata took 11 ms
 Loading persistent took 0 ms
-Running init code took 21 ms
-Loading analysis data took 3 ms
+Running init code took 23 ms
+Loading analysis data took 6 ms
 Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 3 ms
+Reloading save slot metadata took 6 ms
 Backing up script files to '/Users/nyla/Library/RenPy/backups/The Hidden Library':
-Dump and make backups took 25 ms
+Dump and make backups took 29 ms
 Cleaning cache took 0 ms
 Making clean stores took 0 ms
-Initial gc took 41 ms
+Initial gc took 29 ms
 DPI scale factor: 1.000000
 Creating interface object took 0 ms
 Init translation took 0 ms
 Cleaning stores took 0 ms
-Load screen analysis took 1 ms
+Load screen analysis took 0 ms
 Analyze screens took 6 ms
-Save screen analysis took 7 ms
-Save pyanalysis took 3 ms
+Save screen analysis took 8 ms
+Save pyanalysis took 0 ms
 Save bytecode took 0 ms
 Running _start took 0 ms
-Interface start took 177 ms
+Interface start took 252 ms
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1512, 982)
@@ -432,16 +76,16 @@ Screen sizes: virtual=(1920, 1080) physical=(1410, 793) drawable=(2820, 1586)
 Maximum texture size: 4096x4096
 Resetting cache.
 Early init took 4 ms
-Loading error handling took 10 ms
-Loading script took 74 ms
-Loading save slot metadata took 7 ms
+Loading error handling took 18 ms
+Loading script took 71 ms
+Loading save slot metadata took 10 ms
 Loading persistent took 0 ms
-Running init code took 19 ms
-Loading analysis data took 2 ms
+Running init code took 24 ms
+Loading analysis data took 7 ms
 Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 2 ms
+Reloading save slot metadata took 6 ms
 Backing up script files to '/Users/nyla/Library/RenPy/backups/The Hidden Library':
-Dump and make backups took 24 ms
+Dump and make backups took 30 ms
 Cleaning cache took 0 ms
 Making clean stores took 0 ms
 Initial gc took 31 ms
@@ -450,140 +94,12 @@ Creating interface object took 0 ms
 Init translation took 0 ms
 Cleaning stores took 0 ms
 Load screen analysis took 1 ms
-Analyze screens took 5 ms
-Save screen analysis took 7 ms
+Analyze screens took 6 ms
+Save screen analysis took 8 ms
 Save pyanalysis took 0 ms
 Save bytecode took 0 ms
 Running _start took 0 ms
-Interface start took 178 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1512, 982)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Apple'
-Renderer: 'Apple M1 Pro'
-Version: '2.1 Metal - 90.5'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1512, 'current_h': 982, 'refresh_rate': 120, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1410, 793) drawable=(2820, 1586)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 3 ms
-Loading error handling took 9 ms
-Loading script took 59 ms
-Loading save slot metadata took 7 ms
-Loading persistent took 0 ms
-Running init code took 36 ms
-Loading analysis data took 2 ms
-Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 3 ms
-Dump and make backups took 23 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 27 ms
-DPI scale factor: 1.000000
-Creating interface object took 0 ms
-Init translation took 0 ms
-Cleaning stores took 0 ms
-Load screen analysis took 9 ms
-Analyze screens took 1 ms
-Save screen analysis took 0 ms
-Save pyanalysis took 0 ms
-Save bytecode took 0 ms
-Running _start took 1 ms
-Interface start took 144 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1512, 982)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Apple'
-Renderer: 'Apple M1 Pro'
-Version: '2.1 Metal - 90.5'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1512, 'current_h': 982, 'refresh_rate': 120, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1410, 793) drawable=(2820, 1586)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 8 ms
-Loading error handling took 9 ms
-Loading script took 63 ms
-Loading save slot metadata took 8 ms
-Loading persistent took 0 ms
-
-File "game/scripts/inventory.rpy", line 36: 'size' is not a keyword argument or valid child of the textbutton statement.
-    textbutton i.name xalign 0.5 yalign 0.5 size 30 xsize 200 ysize 50 action Return(i):
-                                                ^
-DPI scale factor: 1.000000
-Interface start took 88 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1512, 982)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Apple'
-Renderer: 'Apple M1 Pro'
-Version: '2.1 Metal - 90.5'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1512, 'current_h': 982, 'refresh_rate': 120, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1410, 793) drawable=(2820, 1586)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 3 ms
-Loading error handling took 7 ms
-Loading script took 37 ms
-Loading save slot metadata took 6 ms
-Loading persistent took 0 ms
-
-File "game/scripts/inventory.rpy", line 36: 'size' is not a keyword argument or valid child of the textbutton statement.
-    textbutton i.name xalign 0.5 yalign 0.5 size 30 xsize 200 ysize 50:
-                                                ^
-DPI scale factor: 1.000000
-Interface start took 71 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1512, 982)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Apple'
-Renderer: 'Apple M1 Pro'
-Version: '2.1 Metal - 90.5'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1512, 'current_h': 982, 'refresh_rate': 120, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1410, 793) drawable=(2820, 1586)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 3 ms
-Loading error handling took 7 ms
-Loading script took 37 ms
-Loading save slot metadata took 7 ms
-Loading persistent took 0 ms
-
-File "game/scripts/inventory.rpy", line 36: 'size' is not a keyword argument or valid child of the textbutton statement.
-    textbutton i.name xalign 0.5 yalign 0.5 size 30 xsize 200 ysize 50:
-                                                ^
-DPI scale factor: 1.000000
-Interface start took 81 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1512, 982)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Apple'
-Renderer: 'Apple M1 Pro'
-Version: '2.1 Metal - 90.5'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1512, 'current_h': 982, 'refresh_rate': 120, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1410, 793) drawable=(2820, 1586)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 3 ms
-Loading error handling took 6 ms
-Loading script took 33 ms
-Loading save slot metadata took 6 ms
-Loading persistent took 0 ms
-
-File "game/scripts/inventory.rpy", line 36: 'size' is not a keyword argument or valid child of the textbutton statement.
-    textbutton i.name xalign 0.5 yalign 0.5 size 30 xsize 200 ysize 50:
-                                                ^
-DPI scale factor: 1.000000
-Interface start took 72 ms
+Interface start took 247 ms
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1512, 982)
@@ -597,85 +113,16 @@ Screen sizes: virtual=(1920, 1080) physical=(1410, 793) drawable=(2820, 1586)
 Maximum texture size: 4096x4096
 Resetting cache.
 Early init took 4 ms
-Loading error handling took 6 ms
-Loading script took 35 ms
-Loading save slot metadata took 6 ms
-Loading persistent took 0 ms
-
-File "game/scripts/inventory.rpy", line 36: 'size' is not a keyword argument or valid child of the textbutton statement.
-    textbutton i.name xalign 0.5 yalign 0.5 size 30 xsize 200 ysize 50:
-                                                ^
-DPI scale factor: 1.000000
-Interface start took 77 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1512, 982)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Apple'
-Renderer: 'Apple M1 Pro'
-Version: '2.1 Metal - 90.5'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1512, 'current_h': 982, 'refresh_rate': 120, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1410, 793) drawable=(2820, 1586)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 3 ms
-Loading error handling took 6 ms
-Loading script took 35 ms
-Loading save slot metadata took 6 ms
-Loading persistent took 0 ms
-
-File "game/scripts/inventory.rpy", line 36: 'size' is not a keyword argument or valid child of the textbutton statement.
-    textbutton i.name xalign 0.5 yalign 0.5 size 30 xsize 200 ysize 50:
-                                                ^
-DPI scale factor: 1.000000
-Interface start took 63 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1512, 982)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Apple'
-Renderer: 'Apple M1 Pro'
-Version: '2.1 Metal - 90.5'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1512, 'current_h': 982, 'refresh_rate': 120, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1410, 793) drawable=(2820, 1586)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 3 ms
-Loading error handling took 6 ms
-Loading script took 36 ms
-Loading save slot metadata took 6 ms
-Loading persistent took 0 ms
-
-File "game/scripts/inventory.rpy", line 36: 'size' is not a keyword argument or valid child of the textbutton statement.
-    textbutton i.name xalign 0.5 yalign 0.5 size 30 xsize 200 ysize 50:
-                                                ^
-DPI scale factor: 1.000000
-Interface start took 74 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1512, 982)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Apple'
-Renderer: 'Apple M1 Pro'
-Version: '2.1 Metal - 90.5'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1512, 'current_h': 982, 'refresh_rate': 120, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1410, 793) drawable=(2820, 1586)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 3 ms
 Loading error handling took 9 ms
 Loading script took 72 ms
-Loading save slot metadata took 7 ms
+Loading save slot metadata took 10 ms
 Loading persistent took 0 ms
-Running init code took 64 ms
-Loading analysis data took 3 ms
+Running init code took 21 ms
+Loading analysis data took 2 ms
 Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 3 ms
+Reloading save slot metadata took 5 ms
 Backing up script files to '/Users/nyla/Library/RenPy/backups/The Hidden Library':
-Dump and make backups took 25 ms
+Dump and make backups took 29 ms
 Cleaning cache took 0 ms
 Making clean stores took 0 ms
 Initial gc took 30 ms
@@ -683,50 +130,13 @@ DPI scale factor: 1.000000
 Creating interface object took 0 ms
 Init translation took 0 ms
 Cleaning stores took 0 ms
-Load screen analysis took 1 ms
+Load screen analysis took 0 ms
 Analyze screens took 6 ms
-Save screen analysis took 9 ms
-Save pyanalysis took 0 ms
-Save bytecode took 1 ms
-Running _start took 1 ms
-Interface start took 163 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1512, 982)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Apple'
-Renderer: 'Apple M1 Pro'
-Version: '2.1 Metal - 90.5'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1512, 'current_h': 982, 'refresh_rate': 120, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1410, 793) drawable=(2820, 1586)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 4 ms
-Loading error handling took 8 ms
-Loading script took 56 ms
-Loading save slot metadata took 7 ms
-Loading persistent took 0 ms
-Running init code took 36 ms
-Loading analysis data took 9 ms
-Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 3 ms
-Backing up script files to '/Users/nyla/Library/RenPy/backups/The Hidden Library':
-Dump and make backups took 23 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 26 ms
-DPI scale factor: 1.000000
-Creating interface object took 0 ms
-Init translation took 0 ms
-Cleaning stores took 0 ms
-Load screen analysis took 0 ms
-Analyze screens took 5 ms
-Save screen analysis took 6 ms
+Save screen analysis took 8 ms
 Save pyanalysis took 0 ms
 Save bytecode took 0 ms
 Running _start took 0 ms
-Interface start took 166 ms
+Interface start took 240 ms
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1512, 982)
@@ -738,198 +148,3 @@ Version: '2.1 Metal - 90.5'
 Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1512, 'current_h': 982, 'refresh_rate': 120, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
 Screen sizes: virtual=(1920, 1080) physical=(1410, 793) drawable=(2820, 1586)
 Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 3 ms
-Loading error handling took 8 ms
-Loading script took 54 ms
-Loading save slot metadata took 6 ms
-Loading persistent took 0 ms
-Running init code took 32 ms
-Loading analysis data took 6 ms
-Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 2 ms
-Backing up script files to '/Users/nyla/Library/RenPy/backups/The Hidden Library':
-Dump and make backups took 22 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 25 ms
-DPI scale factor: 1.000000
-Creating interface object took 0 ms
-Init translation took 0 ms
-Cleaning stores took 0 ms
-Load screen analysis took 0 ms
-Analyze screens took 5 ms
-Save screen analysis took 6 ms
-Save pyanalysis took 0 ms
-Save bytecode took 0 ms
-Running _start took 0 ms
-Interface start took 155 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1512, 982)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Apple'
-Renderer: 'Apple M1 Pro'
-Version: '2.1 Metal - 90.5'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1512, 'current_h': 982, 'refresh_rate': 120, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1410, 793) drawable=(2820, 1586)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 4 ms
-Loading error handling took 9 ms
-Loading script took 69 ms
-Loading save slot metadata took 7 ms
-Loading persistent took 0 ms
-Running init code took 38 ms
-Loading analysis data took 3 ms
-Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 3 ms
-Backing up script files to '/Users/nyla/Library/RenPy/backups/The Hidden Library':
-Dump and make backups took 24 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 36 ms
-DPI scale factor: 1.000000
-Creating interface object took 0 ms
-Init translation took 0 ms
-Cleaning stores took 0 ms
-Load screen analysis took 1 ms
-Analyze screens took 7 ms
-Save screen analysis took 8 ms
-Save pyanalysis took 4 ms
-Save bytecode took 0 ms
-Running _start took 1 ms
-Interface start took 173 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1512, 982)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Apple'
-Renderer: 'Apple M1 Pro'
-Version: '2.1 Metal - 90.5'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1512, 'current_h': 982, 'refresh_rate': 120, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1410, 793) drawable=(2820, 1586)
-Maximum texture size: 4096x4096
-
-Full traceback:
-  File "game/script.rpy", line 21, in script call
-    call screen game_overlay
-  File "game/scripts/inventory.rpy", line 22, in script
-    call screen inventory_screen
-  File "renpy/ast.py", line 2241, in execute
-    self.call("execute")
-    ~~~~~~~~~^^^^^^^^^^^
-  File "renpy/ast.py", line 2195, in call
-    return renpy.statements.call(method, parsed, *args, **kwargs)
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/statements.py", line 381, in call
-    return method(parsed, *args, **kwargs)
-           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/common/000statements.rpy", line 695, in execute_call_screen
-    store._return = renpy.call_screen(name, *args, **kwargs)
-                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/exports/statementexports.py", line 348, in call_screen
-    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
-         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/ui.py", line 306, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/core.py", line 2154, in interact
-    repeat, rv = self.interact_core(
-                 ~~~~~~~~~~~~~~~~~~^
-        preloads=preloads,
-        ^^^^^^^^^^^^^^^^^^
-    ...<4 lines>...
-        **kwargs,
-        ^^^^^^^^^
-    )
-    ^
-  File "renpy/display/core.py", line 2700, in interact_core
-    root_widget.visit_all(lambda d: d.per_interact())
-    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/displayable.py", line 457, in visit_all
-    d.visit_all(callback, seen)
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
-  File "renpy/display/displayable.py", line 457, in visit_all
-    d.visit_all(callback, seen)
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
-  File "renpy/display/displayable.py", line 457, in visit_all
-    d.visit_all(callback, seen)
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
-  File "renpy/display/screen.py", line 503, in visit_all
-    callback(self)
-    ~~~~~~~~^^^^^^
-  File "renpy/display/core.py", line 2700, in <lambda>
-    root_widget.visit_all(lambda d: d.per_interact())
-                                    ~~~~~~~~~~~~~~^^ 
-  File "renpy/display/screen.py", line 514, in per_interact
-    self.update()
-    ~~~~~~~~~~~^^
-  File "renpy/display/screen.py", line 715, in update
-    self.screen.function(**self.scope)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
-  File "game/scripts/inventory.rpy", line 27, in execute
-    screen inventory_screen:
-  File "game/scripts/inventory.rpy", line 27, in execute
-    screen inventory_screen:
-  File "game/scripts/inventory.rpy", line 33, in execute
-    vpgrid:
-  File "renpy/display/viewport.py", line 737, in add
-    raise Exception("VPGrid overfull.")
-Exception: VPGrid overfull.
-
-While running game code:
-  File "game/script.rpy", line 21, in script call
-    call screen game_overlay
-  File "game/scripts/inventory.rpy", line 22, in script
-    call screen inventory_screen
-  File "game/scripts/inventory.rpy", line 27, in execute
-    screen inventory_screen:
-  File "game/scripts/inventory.rpy", line 27, in execute
-    screen inventory_screen:
-  File "game/scripts/inventory.rpy", line 33, in execute
-    vpgrid:
-Exception: VPGrid overfull.
-Resetting cache.
-Early init took 4 ms
-Loading error handling took 7 ms
-Loading script took 38 ms
-Loading save slot metadata took 5 ms
-Loading persistent took 0 ms
-Running init code took 32 ms
-Loading analysis data took 2 ms
-Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 2 ms
-Backing up script files to '/Users/nyla/Library/RenPy/backups/The Hidden Library':
-Dump and make backups took 24 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 37 ms
-DPI scale factor: 1.000000
-Creating interface object took 0 ms
-Init translation took 0 ms
-Cleaning stores took 0 ms
-Load screen analysis took 0 ms
-Analyze screens took 7 ms
-Save screen analysis took 8 ms
-Save pyanalysis took 3 ms
-Save bytecode took 0 ms
-Running _start took 1 ms
-Interface start took 197 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1512, 982)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Apple'
-Renderer: 'Apple M1 Pro'
-Version: '2.1 Metal - 90.5'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 4278190080), 'shifts': (16, 8, 0, 24), 'losses': (0, 0, 0, 0), 'current_w': 1512, 'current_h': 982, 'refresh_rate': 120, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1410, 793) drawable=(2820, 1586)
-Maximum texture size: 4096x4096
-Cleaning stores took 2 ms
-Load screen analysis took 26 ms
-Analyze screens took 0 ms
-Running _start took 1 ms
