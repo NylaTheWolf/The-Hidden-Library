@@ -15,8 +15,8 @@ label start:
     # images directory to show it.
 
     scene bg room
-    show atrium 1
-    # call atrium
+    # show atrium 1
+    call atrium
     # TODO: actually implement the script.
     "You open your eyes to find that your plan worked. You have successfully made it to the hidden library."
     call screen game_overlay
