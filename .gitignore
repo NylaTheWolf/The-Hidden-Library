@@ -215,3 +215,5 @@ files.txt
 
 # End of https://www.toptal.com/developers/gitignore/api/renpy
 .DS_Store
+game/saves/navigation.json
+game/script.rpyc
