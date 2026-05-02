@@ -2,6 +2,8 @@
 # Inventory screen code/style originally by Patchmonk (https://github.com/Patchmonk/Simple-Renpy-Inventory).
 # Modified by Tori to fit project code and preferences.
 ###
+define n = nvl_narrator
+
 screen inventory_alt():
     modal True
     zorder 101
@@ -43,10 +45,11 @@ screen inventory_alt():
                                     # background None
                                     hovered Show("show_item_info", item=inventory[slot])
                                     unhovered Hide("show_item_info")
-                                    action Show("show_item_info", item=inventory[slot])
+                                    # action Show("show_item_info", item=inventory[slot])
                                     # action CaptureFocus("show_tooltip")
                                     # action Show("item_iteraction", item=inventory[slot])
-                                    # action Call("letter_read")
+                                    # action [Show("letter"), Hide("inventory_alt"), Hide("show_item_info")]
+                                    action Call("letter_read", from_current=True)
                                     
                                 background Image("components/inventory/images/gui/slot_bg.png") xalign 0.5 yalign 0.5
                                 $ image_name = inventory[slot].image
@@ -80,14 +83,18 @@ screen item_iteraction(item):
         # text item.name
 
 label letter_read:
-    window hide
     hide screen inventory_alt
     hide screen show_item_info
-    show screen letter
-    pause
+    window hide
+    
+    # show screen letter
+    n "This is the letter."
+    nvl clear
+    # pause
 
 screen letter:
     modal True
+    zorder 104
     frame style style["Inventory_frame"]:
         xpos 0.5 ypos 0.5
         xanchor 0.5 yanchor 0.5
