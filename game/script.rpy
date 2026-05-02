@@ -48,11 +48,9 @@ label loop:
 screen game_overlay:
     modal False
     zorder 100
-    # frame pos (0, 0) xsize 150 ysize 60:
-    #     # textbutton "Inventory":
-    #     # text "Inventory" xalign 0.5 yalign 0.5 size 30
-    #     # has hbox
-    #     background None
+    # TODO: Make a nicer inventory button with an icon.
+    # TODO: Add tooltip overlay to items?
+    # TODO: Add a way to interact with the items
     imagebutton auto "inventory_button_%s.png" xsize 150 ysize 60:
         focus_mask True
         xpos 0 ypos 0

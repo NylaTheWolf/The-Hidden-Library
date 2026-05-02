@@ -206,6 +206,9 @@ game/cache/
 *.rpyc
 *.rpymc
 
+# Secret
+*.keystore
+
 
 # The log file and other misc things #
 ######################################

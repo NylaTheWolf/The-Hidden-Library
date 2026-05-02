@@ -10,12 +10,12 @@ screen inventory_alt():
             idle "Close"
             hover "Close_hover"
             action Hide("inventory_alt")
-
+            # action [Hide("inventory_alt"), Hide("item_iteraction")]
         
 
         vbox style style["Inv_vbox"]:  # This vbox contains the title and the grid of inventory slots.
             frame style style["Inv_title_frame"]:
-                text "Inventory" style style["Inv_title"]
+                text "Inventory" style style["Inv_title"] color "BABABA"
 
             viewport id "vp":
                 # The original dynamics vscrollbar bar argument is removed here, In this version we are using the Renpy function, If you want to use the previous version you can always check the previous git version.
@@ -33,12 +33,21 @@ screen inventory_alt():
                 vscrollbar_unscrollable "hide"
 
                 vpgrid cols 7 style style["Inv_grid"]: # This vpgrid displays the inventory slots.
-        
                     for slot in range(inventory_slot_count):  # This loop iterates over all the inventory slots. 
                         
+                        ## Code modified by Nyla/Tori
                         frame: # This frame contains the inventory slot item.
                             maximum(155, 155)
                             if slot < len(inventory): # If the slot is not empty, the slot background image will display.
+                                button:
+                                    # background None
+                                    hovered Show("show_item_info", item=inventory[slot])
+                                    unhovered Hide("show_item_info")
+                                    action Show("show_item_info", item=inventory[slot])
+                                    # action CaptureFocus("show_tooltip")
+                                    # action Show("item_iteraction", item=inventory[slot])
+                                    # action Call("letter_read")
+                                    
                                 background Image("components/inventory/images/gui/slot_bg.png") xalign 0.5 yalign 0.5
                                 $ image_name = inventory[slot].image
                                 if (renpy.loadable(image_name, "components/inventory/images/icons/")): # Check if the item image exists in the icons folder.
@@ -51,3 +60,39 @@ screen inventory_alt():
                             else:
                                 # If the slot is empty, the background is displayed.
                                 background Image("components/inventory/images/gui/slot_bg.png") xalign 0.5 yalign 0.5
+
+## Testing different popups
+
+screen show_item_info(item):
+    zorder 102
+    frame:
+        xsize 300
+        xpos 0.5 ypos 0.5
+        text item.name
+        # text item.name
+
+screen item_iteraction(item):
+    zorder 103
+    frame:
+        xsize 300
+        xpos 0.3 ypos 0.5
+        text "This is an item."
+        # text item.name
+
+label letter_read:
+    window hide
+    hide screen inventory_alt
+    hide screen show_item_info
+    show screen letter
+    pause
+
+screen letter:
+    modal True
+    frame style style["Inventory_frame"]:
+        xpos 0.5 ypos 0.5
+        xanchor 0.5 yanchor 0.5
+        text "This is a letter." color "#FFFFFF"
+        imagebutton style style["Inv_close_btn"]: # This button closes the inventory screen.
+            idle "Close"
+            hover "Close_hover"
+            action Hide("letter")
