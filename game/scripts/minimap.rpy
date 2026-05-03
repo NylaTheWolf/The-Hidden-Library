@@ -3,13 +3,15 @@ image map room2Map = "images/minimap_images/tempRoom2Map.png"
 image map room6Map = "images/minimap_images/tempRoom6Map.png"
 
 init python:
-    class mapManager:
+    import copy
+    class minimapManager:
         def __init__(self):
             self.rooms = {
                 #will add the others later once I add pngs
-                "atrium": minimapRoomData("images/minimap_images/tempAtriumMap.png"),
-                "room2": minimapRoomData("images/minimap_images/tempRoom2Map.png"),
-                "room6": minimapRoomData("images/minimap_images/tempRoom6Map.png")
+                "atrium": copy.deepcopy(minimapRoomData("images/minimap_images/tempAtriumMap.png")),
+                "room2": copy.deepcopy(minimapRoomData("images/minimap_images/tempRoom2Map.png")),
+                "room6": copy.deepcopy(minimapRoomData("images/minimap_images/tempRoom6Map.png")),
+                "room3": copy.deepcopy(minimapRoomData("images/minimap_images/tempRoom3Map.png"))
             }
             #use for draw order to simulate character updating map in real time
             self.connectionList = []
@@ -23,7 +25,8 @@ init python:
         def update_rooms(self, player):
             if player.lastExit != None:
                 #check if the last room/exit combo the player used was already traversed
-                #praying that python reference/value types work the same as c based languages
+                print(f"{player.lastRoom} exit {player.lastExit} entry {player.lastEntry}")
+                print(f"room2 3: {self.rooms["room2"].connections[3]}")
                 current = self.rooms[player.lastRoom].connections[player.lastExit]
                 if current == None:
                     #if not, establish a new link
@@ -35,44 +38,56 @@ init python:
                         self.rooms[player.lastRoom],
                         self.rooms[player.currentRoom]
                     )
+                    self.rooms[player.lastRoom].connections[player.lastExit] = current
                     self.connectionList.append(current)
 
-        #horrendously inneficient code but its fine for a small project
+        #use this to get the bounds of the map
         def format_map(self):
             for r in self.rooms.values():
                 #N/S/E/W are indexes 0-3
                 for i in range(4):
                     connection = r.connections[i]
                     if connection != None:
-                        cWidth, cHeight = renpy.image_size(connection.this.image)
+                        cWidth, cHeight = renpy.image_size(connection.other.image)
                         self.left = min(self.left, connection.offsetX)
                         self.right = max(self.right, connection.offsetX + cWidth)
                         self.top = min(self.top, connection.offsetY)
                         self.bottom = max(self.bottom, connection.offsetY + cHeight)
-            #relative size for frame (idk if I want to use this yet)
+            #relative size for frame (idk if I want to use this yet, depends on minimap vs map distinction)
             self.mapScale = min(200/self.right, 200/self.bottom)
             return self.right - self.left, self.bottom - self.top
 
+        #horrendously inneficient code but its fine for a small project
         def draw_map(self):
             drawRooms = []
-            atriumTransform = Transform(xalign = 0.5, yalign = 0.5)
+            frameWidth = self.right - self.left
+            frameHeight = self.bottom - self.top
+            #hardcoded atrium draw, change if check values once image updated
+            atrX = 0.5
+            atrY = 0.5
+            if frameWidth != 200:
+                atrX = -self.left/(frameWidth - 200)
+            if frameHeight != 200:
+                atrY = -self.top/(frameHeight - 200)
+            atriumTransform = Transform(xalign = atrX, yalign = atrY)
             drawRooms.append((atriumTransform, self.rooms["atrium"].image))
+            #loop for rest
             for r in self.connectionList:
-                cWidth, cHeight = renpy.image_size(r.this.image)
-                cTop = r.offsetX
-                cLeft = r.offsetY
+                cWidth, cHeight = renpy.image_size(r.other.image)
+                cTop = r.offsetY
+                cLeft = r.offsetX
                 drawn = False
                 
                 #normalize to 0,0 as top left coordinates
                 cLeft -= self.left
                 cTop -= self.top
                 #convert to renpy screen positions (aka 100% = screen width - image width)
-                tx = 0
-                if (self.right - self.left) - cWidth != 0:
-                    tx = cLeft/((self.right - self.left) - cWidth)
-                ty = 0
-                if (self.bottom - self.top) - cHeight != 0:
-                    ty = cTop/((self.bottom - self.top) - cHeight)
+                tx = 0.5
+                if frameWidth - cWidth != 0:
+                    tx = cLeft/(frameWidth - cWidth)
+                ty = 0.5
+                if frameHeight - cHeight != 0:
+                    ty = cTop/(frameHeight - cHeight)
                 transform = Transform(xalign = tx, yalign = ty)
                 for dr in drawRooms:
                     #avoid duplicate draws while still being able to draw the same room in multiple places
@@ -80,7 +95,7 @@ init python:
                     if tx == dr[0].xalign and ty == dr[0].yalign:
                         drawn = True
                 if drawn == False:
-                    drawRooms.append((transform, r.this.image))
+                    drawRooms.append((transform, r.other.image))
             return drawRooms
 
 
@@ -109,19 +124,17 @@ init python:
             self.other = other
 
             
-    mapManager = mapManager()
+    mapManager = minimapManager()
 
 
 screen minimap(player):
-    $mapManager.update_rooms(player)
     $frameX, frameY = mapManager.format_map()
-    $print("w:"+frameX+", h:"+frameY)
+    #$print(f"w:{frameX}, h:{frameY}")
     frame align (1.0, 1.0) xsize frameX ysize frameY:
-        
         $currentRoom = 0
         for r in mapManager.draw_map():
             $trans, imagePath = r
-            $print("x:"+trans.xalign+", y:"+trans.yalign)
+            #$print(f"x:{trans.xalign}, y:{trans.yalign}")
             add imagePath:
                 at trans
 

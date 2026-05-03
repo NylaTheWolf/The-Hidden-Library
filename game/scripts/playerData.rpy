@@ -1,13 +1,14 @@
 init python:
+    import copy
     class playerData:
         def __init__(self):
             self.rooms = { #room names are temporary and subject to change
-                "atrium": roomData("The Atrium", "room_atrium", "atrium 1.jpg", "images/minimap_image/tempAtriumMap.png"),
-                "room2": roomData("Flooded Picture Books", "room2", "room2temp.png", "images/minimap_image/tempRoom2Map.png"),
-                "room3": roomData("The Card Catalogue", "room3", "atrium 1.jpg", "images/minimap_image/tempAtriumMap.png"),
-                "room4": roomData("Ancient Reading Room", "room4", "atrium 1.jpg", "images/minimap_image/tempAtriumMap.png"),
-                "room5": roomData("Natural Sciences", "room5", "atrium 1.jpg", "images/minimap_image/tempAtriumMap.png"),
-                "room6": roomData("The Grand Catalogue", "room6", "room6temp.png", "images/minimap_image/tempRoom6Map.png")
+                "atrium": copy.deepcopy(roomData("The Atrium", "room_atrium", "atrium 1.jpg", "images/minimap_image/tempAtriumMap.png")),
+                "room2": copy.deepcopy(roomData("Flooded Picture Books", "room2", "room2temp.png", "images/minimap_image/tempRoom2Map.png")),
+                "room3": copy.deepcopy(roomData("The Card Catalogue", "room3", "atrium 1.jpg", "images/minimap_image/tempAtriumMap.png")),
+                "room4": copy.deepcopy(roomData("Ancient Reading Room", "room4", "atrium 1.jpg", "images/minimap_image/tempAtriumMap.png")),
+                "room5": copy.deepcopy(roomData("Natural Sciences", "room5", "atrium 1.jpg", "images/minimap_image/tempAtriumMap.png")),
+                "room6": copy.deepcopy(roomData("The Grand Catalogue", "room6", "room6temp.png", "images/minimap_image/tempRoom6Map.png"))
             }
             #should both be set whenever a player leaves a room
             self.lastRoom = "atrium"
@@ -26,6 +27,7 @@ init python:
             self.exitY = y
             self.rooms[self.currentRoom].enterDirection = currentE
             self.rooms[self.lastRoom].visited = True
+            mapManager.update_rooms(self)
 
     class roomData:
         def __init__(self, displayName, label, imagePath, mapImagePath):
