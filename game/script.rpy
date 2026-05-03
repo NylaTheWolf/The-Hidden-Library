@@ -8,17 +8,23 @@
 
 # The game starts here.
 
+
+
 label start:
 
+    $player = playerData()
+    $mapManager = mapManager()
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
-
+    
+    
     scene bg room
     show atrium 1
     # call atrium
     # TODO: actually implement the script.
     "You open your eyes to find that your plan worked. You have successfully made it to the hidden library."
+    call atrium(player)
     show screen game_overlay
     # Player returns here after closing inventory screen
     show screen game_overlay
@@ -28,12 +34,6 @@ label start:
     # "Inventory"
     # return
     # $ renpy.pause()
-
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
-
-    # show eileen happy
 
 label loop:
     # call screen game_overlay

@@ -5,6 +5,6 @@ label room6: #grand catalogue
     menu:
         "Where should I go?"
         "The door on the left":
-            call room2
+            call room2(player)
         "The door on the right":
-            call room6
+            call room6(player)
