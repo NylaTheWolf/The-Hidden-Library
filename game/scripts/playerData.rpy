@@ -6,6 +6,7 @@ init python:
                 "atrium": copy.deepcopy(roomData("The Atrium", "room_atrium", "atrium 1.jpg", "images/minimap_image/tempAtriumMap.png")),
                 "room2": copy.deepcopy(roomData("Flooded Picture Books", "room2", "room2temp.png", "images/minimap_image/tempRoom2Map.png")),
                 "room3": copy.deepcopy(roomData("The Card Catalogue", "room3", "atrium 1.jpg", "images/minimap_image/tempAtriumMap.png")),
+                "room3_2": copy.deepcopy(roomData("The Card Catalogue", "room3", "atrium 1.jpg", "images/minimap_image/tempAtriumMap.png")),
                 "room4": copy.deepcopy(roomData("Ancient Reading Room", "room4", "atrium 1.jpg", "images/minimap_image/tempAtriumMap.png")),
                 "room5": copy.deepcopy(roomData("Natural Sciences", "room5", "atrium 1.jpg", "images/minimap_image/tempAtriumMap.png")),
                 "room6": copy.deepcopy(roomData("The Grand Catalogue", "room6", "room6temp.png", "images/minimap_image/tempRoom6Map.png"))
@@ -17,17 +18,20 @@ init python:
             self.lastEntry = None
             self.exitX = 0
             self.exitY = 0
+            self.relativeX = 0
+            self.relativeY = 0
+            self.relativeRotation = 0
 
-        def move_room(self, lastR, lastE, currentR, currentE, x, y):
-            self.lastRoom = lastR
-            self.lastExit = lastE
-            self.currentRoom = currentR
-            self.lastEntry = currentE
+        def move_room(self, lastRoom, lastExit, currentRoom, lastEntry, x, y):
+            self.lastRoom = lastRoom
+            self.lastExit = lastExit
+            self.currentRoom = currentRoom
+            self.lastEntry = lastEntry
             self.exitX = x
             self.exitY = y
-            self.rooms[self.currentRoom].enterDirection = currentE
+            self.rooms[self.currentRoom].enterDirection = lastEntry
             self.rooms[self.lastRoom].visited = True
-            mapManager.update_rooms(self)
+            mapManager.update_rooms()
 
     class roomData:
         def __init__(self, displayName, label, imagePath, mapImagePath):
@@ -37,4 +41,6 @@ init python:
             self.mapImagePath = mapImagePath
             self.visited = False #whether or not the player has been here before. Can be used in dialogue/for the map
             self.enterDirection = 0 #which direction the player entered from. Used for adding connections to the map
+        
+    playerObj = playerData()
             

@@ -13,7 +13,6 @@
 label start:
 
     $player = playerData()
-    $mapManager = minimapManager()
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
@@ -49,11 +48,15 @@ screen game_overlay:
             xalign 0.5
             action Call("open_inventory") # opens inventory screen
             # action Show("inventory_screen") # opens inventory screen
-    frame align (0.5, 0.5) xsize 500:
+    frame align (1, 0) xsize 500:
         textbutton "Quit":
             xalign 0.5
             # action Return() # ends game
             action Quit() # ends game
+    frame align (.5, 0) xsize 500:
+        textbutton "Map":
+            xalign .5
+            action Show("minimap")
 # $ renpy.pause()
 # pause
 # return

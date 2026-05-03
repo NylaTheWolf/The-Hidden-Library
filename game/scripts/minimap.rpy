@@ -2,8 +2,9 @@ image map atriumMap = "images/minimap_images/tempAtriumMap.png"
 image map room2Map = "images/minimap_images/tempRoom2Map.png"
 image map room6Map = "images/minimap_images/tempRoom6Map.png"
 
-init python:
+init 1 python:
     import copy
+    import json
     class minimapManager:
         def __init__(self):
             self.rooms = {
@@ -11,8 +12,34 @@ init python:
                 "atrium": copy.deepcopy(minimapRoomData("images/minimap_images/tempAtriumMap.png")),
                 "room2": copy.deepcopy(minimapRoomData("images/minimap_images/tempRoom2Map.png")),
                 "room6": copy.deepcopy(minimapRoomData("images/minimap_images/tempRoom6Map.png")),
-                "room3": copy.deepcopy(minimapRoomData("images/minimap_images/tempRoom3Map.png"))
+                "room3": copy.deepcopy(minimapRoomData("images/minimap_images/tempRoom3Map.png")),
+                "room3_2": copy.deepcopy(minimapRoomData("images/minimap_images/tempRoom3Map.png")),
+                "room4": copy.deepcopy(minimapRoomData("images/minimap_images/tempRoom3Map.png"))
             }
+            cData = json.load(renpy.file("data/roomConnections.json"))
+            for roomKey in cData:
+                for direction in cData[roomKey]:
+                    cn = cData[roomKey][direction]
+                    cnParams = cn["connectionParams"]
+                    ctParams = cn["triggerParams"]
+                    #lastRoom, lastExit, currentRoom, lastEntry, x, y
+                    connection = copy.deepcopy(minimapClickTrigger(
+                        Transform(xalign = float(ctParams[0]), yalign = float(ctParams[1])),
+                        float(ctParams[2]),
+                        float(ctParams[3]),
+                        (
+                            roomKey,
+                            int(direction),
+                            cnParams[0],
+                            int(cnParams[1]),
+                            int(cnParams[2]),
+                            int(cnParams[3])
+                            )
+                        ))
+                    self.rooms[roomKey].clickTransitions.append(connection)
+                    
+
+
             #use for draw order to simulate character updating map in real time
             self.connectionList = []
             #hardcoded for current atrium map png, change later
@@ -21,24 +48,23 @@ init python:
             self.bottom = 200
             self.left = 0
             self.right = 200
+            self.currentFrame = (0,0)
 
-        def update_rooms(self, player):
-            if player.lastExit != None:
+        def update_rooms(self):
+            if playerObj.lastExit != None:
                 #check if the last room/exit combo the player used was already traversed
-                print(f"{player.lastRoom} exit {player.lastExit} entry {player.lastEntry}")
-                print(f"room2 3: {self.rooms["room2"].connections[3]}")
-                current = self.rooms[player.lastRoom].connections[player.lastExit]
+                current = self.rooms[playerObj.lastRoom].connections[playerObj.lastExit]
                 if current == None:
                     #if not, establish a new link
                     current = minimapRoomConnection(
-                        player.lastExit, 
-                        player.lastEntry, 
-                        player.exitX,
-                        player.exitY,
-                        self.rooms[player.lastRoom],
-                        self.rooms[player.currentRoom]
+                        playerObj.lastExit, 
+                        playerObj.lastEntry, 
+                        playerObj.exitX,
+                        playerObj.exitY,
+                        self.rooms[playerObj.lastRoom],
+                        self.rooms[playerObj.currentRoom]
                     )
-                    self.rooms[player.lastRoom].connections[player.lastExit] = current
+                    self.rooms[playerObj.lastRoom].connections[playerObj.lastExit] = current
                     self.connectionList.append(current)
 
         #use this to get the bounds of the map
@@ -94,19 +120,28 @@ init python:
                     #potentially it would be better to just have rooms with impossible entrances be represented by multiple objects, but idk
                     if tx == dr[0].xalign and ty == dr[0].yalign:
                         drawn = True
+                    if self.rooms[playerObj.currentRoom] == r.other:
+                        self.currentFrame = (tx, ty)
+                        
                 if drawn == False:
                     drawRooms.append((transform, r.other.image))
+                    
+                    
             return drawRooms
-
-
+            
+        def make_triggers(self):
+            return self.rooms[playerObj.currentRoom].clickTransitions
 
     class minimapRoomData:
         #connections is a list of minimapRoomConnections (N=0,E=1,S=2,W=3)
         def __init__(self, image, connections = [None, None, None, None]):
             self.connections = connections
             self.image = image
+            #where we store the click events used for player navigation, added by room labels
+            self.clickTransitions = []
         def draw_connection(self, connection):
             self.connections[connection.exitDirection] = connection
+
     
     class minimapRoomConnection:
         #offsets are relative cooradinates to atrium (top left). 
@@ -122,20 +157,61 @@ init python:
             self.offsetY = offsetY
             self.this = this
             self.other = other
+        
+    class minimapClickTrigger:
+        def __init__(self, transform, width, height, connectionParams, special = None):
+            self.transform = transform
+            self.width = width
+            self.height = height
+            self.connectionParams = connectionParams
+            #special is a yet undefined data type used for conditional movement such as the one blocked by the crowbar
+            self.special = special
+        def create_trigger(self):
+            if(special == None):
+                return (self.transform, self.width, self.height, self.connectionParams)
+        def on_click(self):
+            #theres gotta be a better way of doing this but idk python well enough
+            a,b,c,d,e,f = self.connectionParams
+            playerObj.move_room(a,b,c,d,e,f)
+            renpy.call(self.connectionParams[2], playerObj)
 
             
     mapManager = minimapManager()
 
 
-screen minimap(player):
+screen minimap():
+    python: 
+        if mapManager == None:
+            mapManager = minimapManager(playerData())
     $frameX, frameY = mapManager.format_map()
-    #$print(f"w:{frameX}, h:{frameY}")
-    frame align (1.0, 1.0) xsize frameX ysize frameY:
+    frame align (0.5, 0.5) xsize frameX ysize frameY:
+        padding (0,0)
+        background None
+        
         $currentRoom = 0
         for r in mapManager.draw_map():
             $trans, imagePath = r
-            #$print(f"x:{trans.xalign}, y:{trans.yalign}")
             add imagePath:
                 at trans
+        $currentFrameX, currentFrameY = mapManager.currentFrame
+        frame align(currentFrameX, currentFrameY) xsize 200 ysize 200:
+            padding(0,0)
+            background Solid("#00000011")
+            for ct in mapManager.make_triggers():
+                #have to recast these for some reason because it turns them into strings??? idk
+                $w = float(ct.width)
+                $h= float(ct.height)
+                $x = float(ct.transform.xalign)
+                $y = float(ct.transform.yalign)
+                textbutton "Move":
+                    text_size 20
+                    xsize w
+                    ysize h
+                    xalign x
+                    yalign y
+                    action Function(ct.on_click)
+
+
+
 
         
