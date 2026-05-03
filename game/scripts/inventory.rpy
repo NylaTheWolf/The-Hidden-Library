@@ -39,7 +39,7 @@ init python:
         for item in range(len(inventory)):
             if inventory[item].name == "Torn Page":
                 inventory[item].add_text("This is a torn page.")
-                inventory[item].edit_description("A crumpled up page torn from an old book.")
+                inventory[item].edit_description("A crumpled up page torn from an old book.\n\n(Click to read.)")
 
 
 label open_inventory:

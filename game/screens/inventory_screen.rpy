@@ -53,8 +53,8 @@ screen inventory_alt():
                                     
                                 background Image("components/inventory/images/gui/slot_bg.png") xalign 0.5 yalign 0.5
                                 $ image_name = inventory[slot].image
-                                if (renpy.loadable(image_name, "components/inventory/images/icons/")): # Check if the item image exists in the icons folder.
-                                    add Image("components/inventory/images/icons/" + image_name, xalign=0.5, yalign=0.5) size (120, 120)
+                                if (renpy.loadable(image_name, "images/icons/")): # Check if the item image exists in the icons folder.
+                                    add Image("images/icons/" + image_name, xalign=0.5, yalign=0.5) size (100, 100)
                                 else:
                                     # If image not added, use placeholder image
                                     add Image("components/inventory/images/icons/placeholder.png", xalign=0.5, yalign=0.5) size (120, 120)
@@ -72,16 +72,15 @@ screen show_item_info(item):
     #     xsize 300 ysize 100
     #     xpos 0.5 ypos 0.5
         # text item.name
-        # text item.name
-        # text item.name
     fixed:
-        area(1500, 200, 300, 580)
-        # xalign 0.2 yalign 0.5
+        area(1500, 200, 320, 580)
         add "#000000b3"
         if item.description is not None:
-            text item.description color "#FFFFFF"
+            text item.description xalign 0.5 yalign 0.0 color "#FFFFFF":
+                yoffset 30
         else:
-            text "No description available." color "#FFFFFF"
+            text "No description available." xalign 0.5 yalign 0.0 color "#FFFFFF":
+                yoffset 30
 
 screen item_iteraction(item):
     zorder 103
