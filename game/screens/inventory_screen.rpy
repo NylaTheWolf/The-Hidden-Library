@@ -42,14 +42,14 @@ screen inventory_alt():
                             maximum(155, 155)
                             if slot < len(inventory): # If the slot is not empty, the slot background image will display.
                                 button:
-                                    # background None
                                     hovered Show("show_item_info", item=inventory[slot])
                                     unhovered Hide("show_item_info")
                                     # action Show("show_item_info", item=inventory[slot])
                                     # action CaptureFocus("show_tooltip")
                                     # action Show("item_iteraction", item=inventory[slot])
                                     # action [Show("letter"), Hide("inventory_alt"), Hide("show_item_info")]
-                                    action Call("letter_read", from_current=True)
+                                    # if inventory[slot].readable:
+                                    action Call("letter_read", item=inventory[slot], from_current=True)
                                     
                                 background Image("components/inventory/images/gui/slot_bg.png") xalign 0.5 yalign 0.5
                                 $ image_name = inventory[slot].image
@@ -68,11 +68,20 @@ screen inventory_alt():
 
 screen show_item_info(item):
     zorder 102
-    frame:
-        xsize 300
-        xpos 0.5 ypos 0.5
-        text item.name
+    # frame:
+    #     xsize 300 ysize 100
+    #     xpos 0.5 ypos 0.5
         # text item.name
+        # text item.name
+        # text item.name
+    fixed:
+        area(1500, 200, 300, 580)
+        # xalign 0.2 yalign 0.5
+        add "#000000b3"
+        if item.description is not None:
+            text item.description color "#FFFFFF"
+        else:
+            text "No description available." color "#FFFFFF"
 
 screen item_iteraction(item):
     zorder 103
@@ -82,15 +91,17 @@ screen item_iteraction(item):
         text "This is an item."
         # text item.name
 
-label letter_read:
-    hide screen inventory_alt
-    hide screen show_item_info
-    window hide
-    
-    # show screen letter
-    n "This is the letter."
-    nvl clear
-    # pause
+label letter_read(item):
+    if (item.is_readable):
+        hide screen inventory_alt
+        hide screen show_item_info
+        window hide
+        
+        # show screen letter
+        n "[item.item_text]"
+        nvl clear
+        show screen inventory_alt # return to inventory
+        # pause
 
 screen letter:
     modal True

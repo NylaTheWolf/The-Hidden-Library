@@ -5,8 +5,8 @@ style Inventory_frame is frame:
     background  "components/inventory/images/gui/inventoryBG.png"
     xsize 1160
     ysize 580
-    xalign 0.5
-    # xalign 0.4
+    # xalign 0.5
+    xalign 0.4
     yalign 0.4
 
 style Inv_close_btn:

@@ -17,7 +17,8 @@ label start:
     scene bg room
     show atrium 1
     # call atrium
-    # TODO: actually implement the script.
+    # TODO: actually implement the game script.
+    $ initial_inventory_setup()
     show screen game_overlay
     # show screen HUD
     "You open your eyes to find that your plan worked. You have successfully made it to the hidden library."
