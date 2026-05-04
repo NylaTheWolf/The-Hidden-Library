@@ -48,28 +48,14 @@ screen game_overlay:
     zorder 100
     # TODO: Make a nicer inventory button with an icon.
     # TODO: Add tooltip overlay to items?
-    # TODO: Add a way to interact with the items
     imagebutton auto "inventory_button_%s.png" xsize 150 ysize 60:
         focus_mask True
         xpos 0 ypos 0
         xanchor 0 yanchor 0
-        # xoffset -4 yoffset -5.5
-        # xalign 0.0 yalign 0.0
-        # xalign 0.5 yalign 0.5
-        # padding (10,10,10,10)
         idle "components/inventory/images/inventory_button.png"
         hover "components/inventory/images/inventory_button_hover.png"
-        # action Call("open_inventory") # opens inventory screen
         action Show("inventory_alt") # opens inventory screen
     frame align (.5, 0) xsize 500:
         textbutton "Map":
             xalign .5
             action Show("minimap")
-    # frame align (0.5, 0.5) xsize 500:
-    #     textbutton "Quit":
-    #         xalign 0.5
-    #         # action Return() # ends game
-    #         action Quit() # ends game
-# $ renpy.pause()
-# pause
-# return

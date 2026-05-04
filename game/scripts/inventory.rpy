@@ -5,8 +5,8 @@ default inventory = [ item("Box of Matches", "box_of_matches.png", False),
     item("Pocket Knife", "pocket_knife.png", False), 
     item("Torn Page", "torn_page.png", True),
     item("Crumpled Letter", "crumpled_letter.png", True),
-    item("Blank Notebook", "blank_notebook.png", False),
-    item("Fountain Pen", "fountain_pen.png", False)]
+    item("Notebook", "blank_notebook.png", True),
+    item("Fountain Pen", "fountain_pen.png", False) ]
 
 default inventory_slot_count = 21 # Total number of inventory slots available to the player.
 
@@ -38,20 +38,30 @@ init python:
     def initial_inventory_setup():
         for item in range(len(inventory)):
             if inventory[item].name == "Torn Page":
+                inventory[item].edit_description("A page torn from the 1913 book {i}In the Library of the Lost{/i} by Eustace Crockery.\n\n(Read)")
                 inventory[item].add_text("This is a torn page.")
-                inventory[item].edit_description("A crumpled up page torn from an old book.\n\n(Click to read.)")
-
-
+            elif inventory[item].name == "Crumpled Letter":
+                inventory[item].add_text("This is a crumpled letter.")
+                inventory[item].edit_description("A crumpled letter from an old friend.\n\n(Click to read.)")
+            elif inventory[item].name == "Box of Matches":
+                inventory[item].edit_description("A half-empty box of matches.")
+            elif inventory[item].name == "Pocket Knife":
+                inventory[item].edit_description("Your trusty pocket knife.")
+            elif inventory[item].name == "Notebook":
+                description = "A notebook to help guide you through this mysterious place.\n\n(Open)"
+                inventory[item].edit_description(description)
+                # Popup text for notebook
+                notebook_observation = [ "test1", "test2", "test3" ]
+                inventory[item].add_text(notebook_observation)
+            elif inventory[item].name == "Fountain Pen":
+                inventory[item].edit_description("All that remains of your mother's life.")
+                
 label open_inventory:
     hide screen game_overlay
     # call screen inventory_screen
     show screen inventory_alt
     # "Back to the game"
     show screen game_overlay
-    # return
-    # "Your Inventory"
-    # return
-    # $ renpy.pause()
 
 # screen inventory_screen():
 #     modal True
