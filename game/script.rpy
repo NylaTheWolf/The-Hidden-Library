@@ -8,12 +8,16 @@
 
 # The game starts here.
 
+
+
 label start:
 
+    $player = playerData()
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
-
+    
+    
     scene bg room
     show atrium 1
     # call atrium
@@ -32,13 +36,6 @@ label start:
     # return
     # $ renpy.pause()
 
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
-
-    # show eileen happy
-
-# TESTING PURPOSES
 label loop:
 #     # call screen game_overlay
     show screen game_overlay
@@ -64,6 +61,10 @@ screen game_overlay:
         hover "components/inventory/images/inventory_button_hover.png"
         # action Call("open_inventory") # opens inventory screen
         action Show("inventory_alt") # opens inventory screen
+    frame align (.5, 0) xsize 500:
+        textbutton "Map":
+            xalign .5
+            action Show("minimap")
     # frame align (0.5, 0.5) xsize 500:
     #     textbutton "Quit":
     #         xalign 0.5
