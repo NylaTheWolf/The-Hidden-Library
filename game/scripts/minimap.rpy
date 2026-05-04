@@ -173,7 +173,7 @@ init 1 python:
             #theres gotta be a better way of doing this but idk python well enough
             a,b,c,d,e,f = self.connectionParams
             playerObj.move_room(a,b,c,d,e,f)
-            renpy.call(self.connectionParams[2], playerObj)
+            renpy.call(self.connectionParams[2])
 
             
     mapManager = minimapManager()

@@ -1,1 +1,1 @@
-label room4(player):
+label room4:
