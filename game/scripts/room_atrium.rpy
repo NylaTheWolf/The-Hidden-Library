@@ -1,12 +1,17 @@
-label atrium:
+define atriumBaseText = "holy shit what a crazy library"
+default atriumText = ""
+
+
+label atrium(player):
     image bg atrium = Transform("atrium 1", zoom=.75)
     scene bg atrium
-    # show screen game_overlay
-    "holy shit what a crazy library"
+    python:
+        atriumText = atriumBaseText
+        if(player.rooms["atrium"].visited):
+            atriumText += " again?" #adds to displayed string for debugging purposes, put proper return text here later
+        player.rooms["atrium"].visited = True #sets the room's data as being visited
 
-    menu: #note for menus, we could implement context sensitive direciton based on where the player entered from, but only if we have time
-        "Where should I go?"
-        "The West door":
-            call room2
-        "The East door":
-            call room6
+    "[atriumText]"
+
+    show screen game_overlay
+    call atrium(player)
