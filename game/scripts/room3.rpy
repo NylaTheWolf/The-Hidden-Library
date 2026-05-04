@@ -1,5 +1,5 @@
 label room3:
-    image bg room3 = Transform("room2temp", zoom=.75)
+    image bg room3 = Transform("room3", zoom=.75)
     scene bg room3
     
     show screen game_overlay

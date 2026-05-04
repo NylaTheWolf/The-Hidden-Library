@@ -31,11 +31,41 @@
         },
         "2": {
             "triggerParams": ["0.5", "1.0", ".3", ".1"],
-            "connectionParams": ["room4", "0", "-400", "400"]
+            "connectionParams": ["room4", "0", "-200", "400"]
         },
         "3": {
             "triggerParams": ["0", "0.5", ".3", ".1"],
             "connectionParams": ["room2", "3", "-200", "0"]
+        }
+    },
+    "room4": {
+        "0": {
+            "triggerParams": ["0.5", "0", ".3", ".1"],
+            "connectionParams": ["room3", "0", "-200", "200"]
+        },
+        "1": {
+            "triggerParams": ["1.0", "0.5", ".3", ".1"],
+            "connectionParams": ["room5", "3", "0", "400"]
+        }
+    },
+    "room5": {
+         "0": {
+            "triggerParams": ["0.5", "0", ".3", ".1"],
+            "connectionParams": ["room6", "0", "0", "200"]
+        },
+         "3": {
+            "triggerParams": ["0", "0.5", ".3", ".1"],
+            "connectionParams": ["room4", "1", "-200", "400"]
+        }
+    },
+    "room6":{
+         "2": {
+            "triggerParams": ["0.5", "1.0", ".3", ".1"],
+            "connectionParams": ["room5", "0", "0", "400"]
+        },
+        "3": {
+            "triggerParams": ["0", "0.5", ".3", ".1"],
+            "connectionParams": ["atrium", "3", "0", "0"]
         }
     }
 }

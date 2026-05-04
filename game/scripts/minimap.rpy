@@ -14,7 +14,8 @@ init 1 python:
                 "room6": copy.deepcopy(minimapRoomData("images/minimap_images/tempRoom6Map.png")),
                 "room3": copy.deepcopy(minimapRoomData("images/minimap_images/tempRoom3Map.png")),
                 "room3_2": copy.deepcopy(minimapRoomData("images/minimap_images/tempRoom3Map.png")),
-                "room4": copy.deepcopy(minimapRoomData("images/minimap_images/tempRoom3Map.png"))
+                "room4": copy.deepcopy(minimapRoomData("images/minimap_images/tempRoom3Map.png")),
+                "room5": copy.deepcopy(minimapRoomData("images/minimap_images/tempRoom3Map.png"))
             }
             cData = json.load(renpy.file("data/roomConnections.json"))
             for roomKey in cData:
