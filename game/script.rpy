@@ -21,42 +21,55 @@ label start:
     scene bg room
     show atrium 1
     # call atrium
-    # TODO: actually implement the script.
+    # TODO: actually implement the game script.
+    $ initial_inventory_setup()
+    show screen game_overlay
+    # show screen HUD
     "You open your eyes to find that your plan worked. You have successfully made it to the hidden library."
-    call atrium(player)
-    show screen game_overlay
-    # Player returns here after closing inventory screen
-    show screen game_overlay
-    pause
     # show screen game_overlay
+    # Player returns here after closing inventory screen
+    # "This is to make sure a player can access their inventory at any time during the game."
+    # pause
+    jump atrium
     
     # "Inventory"
     # return
     # $ renpy.pause()
 
 label loop:
-    # call screen game_overlay
+#     # call screen game_overlay
     show screen game_overlay
     "What do you want to do?"
+    "This is to make sure a player can access their inventory at any time during the game."
     jump loop
 
-    # TESTING PURPOSES ONLY
 screen game_overlay:
-    # modal True
-    frame align (0, 0) xsize 500:
-        textbutton "Inventory":
-            xalign 0.5
-            action Call("open_inventory") # opens inventory screen
-            # action Show("inventory_screen") # opens inventory screen
-    frame align (1, 0) xsize 500:
-        textbutton "Quit":
-            xalign 0.5
-            # action Return() # ends game
-            action Quit() # ends game
+    modal False
+    zorder 100
+    # TODO: Make a nicer inventory button with an icon.
+    # TODO: Add tooltip overlay to items?
+    # TODO: Add a way to interact with the items
+    imagebutton auto "inventory_button_%s.png" xsize 150 ysize 60:
+        focus_mask True
+        xpos 0 ypos 0
+        xanchor 0 yanchor 0
+        # xoffset -4 yoffset -5.5
+        # xalign 0.0 yalign 0.0
+        # xalign 0.5 yalign 0.5
+        # padding (10,10,10,10)
+        idle "components/inventory/images/inventory_button.png"
+        hover "components/inventory/images/inventory_button_hover.png"
+        # action Call("open_inventory") # opens inventory screen
+        action Show("inventory_alt") # opens inventory screen
     frame align (.5, 0) xsize 500:
         textbutton "Map":
             xalign .5
             action Show("minimap")
+    # frame align (0.5, 0.5) xsize 500:
+    #     textbutton "Quit":
+    #         xalign 0.5
+    #         # action Return() # ends game
+    #         action Quit() # ends game
 # $ renpy.pause()
 # pause
 # return

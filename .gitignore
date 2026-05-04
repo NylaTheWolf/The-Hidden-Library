@@ -191,6 +191,7 @@ cython_debug/
 ########################################
 cache/
 saves/
+game/cache/
 
 
 # Compiled source #
@@ -205,6 +206,9 @@ saves/
 *.rpyc
 *.rpymc
 
+# Secret
+*.keystore
+
 
 # The log file and other misc things #
 ######################################
@@ -214,6 +218,4 @@ traceback.txt
 files.txt
 
 # End of https://www.toptal.com/developers/gitignore/api/renpy
-.DS_Store
-game/saves/navigation.json
-game/script.rpyc
+.vscode
