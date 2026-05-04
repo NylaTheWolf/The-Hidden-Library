@@ -48,7 +48,10 @@ init python:
             elif inventory[item].name == "Pocket Knife":
                 inventory[item].edit_description("Your trusty pocket knife.")
             elif inventory[item].name == "Notebook":
-                description = "A notebook to help guide you through this mysterious place.\n\n(Open)"
+                description = "A notebook to help guide you through this mysterious place. \n\n" + \
+                "The first few pages are filled with the information you've collected about the library, with authors and page numbers cited and a side column of personal notes and asides. \n\n" + \
+                "An acquaintance once told you that your notes read like an academic paper. " + \
+                "You’re not sure it was a compliment."
                 inventory[item].edit_description(description)
                 # Popup text for notebook
                 notebook_observation = [ "test1", "test2", "test3" ]

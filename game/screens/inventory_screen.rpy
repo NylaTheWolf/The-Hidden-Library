@@ -68,16 +68,17 @@ screen inventory_alt():
 
 screen show_item_info(item):
     zorder 102
-    # frame:
-    #     xsize 300 ysize 100
-    #     xpos 0.5 ypos 0.5
-        # text item.name
     fixed:
-        area(1500, 200, 320, 580)
+        area(1480, 200, 400, 580)
         add "#000000b3"
+        # xmargin 4
         if item.description is not None:
             text item.description xalign 0.5 yalign 0.0 color "#FFFFFF":
                 yoffset 30
+                if (len(item.description) >= 120):
+                    size 24
+                else:
+                    size 30
         else:
             text "No description available." xalign 0.5 yalign 0.0 color "#FFFFFF":
                 yoffset 30
