@@ -1,3 +1,15 @@
+# default lastRoom = "atrium"
+# default currentRoom = "atrium"
+# default lastExit = None
+# default lastEntry = None
+# default exitX = 0
+# default exitY = 0
+# default relativeX = 0
+# default relativeY = 0
+# default relativeRotation = 0
+
+# default
+
 init python:
     import copy
     class playerData:
@@ -40,7 +52,4 @@ init python:
             self.imagePath = imagePath
             self.mapImagePath = mapImagePath
             self.visited = False #whether or not the player has been here before. Can be used in dialogue/for the map
-            self.enterDirection = 0 #which direction the player entered from. Used for adding connections to the map
-        
-    playerObj = playerData()
-            
+            self.enterDirection = 0 #which direction the player entered from. Used for adding connections to the map            

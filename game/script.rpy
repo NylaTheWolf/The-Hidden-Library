@@ -8,15 +8,13 @@
 
 # The game starts here.
 
-
+default playerObj = playerData()
+default mapManager = minimapManager()
 
 label start:
-
-    $player = playerData()
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
-    
     
     scene bg room
     show atrium 1

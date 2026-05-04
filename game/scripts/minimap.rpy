@@ -176,15 +176,11 @@ init 1 python:
             playerObj.move_room(a,b,c,d,e,f)
             renpy.call(self.connectionParams[2])
 
-            
-    mapManager = minimapManager()
-
-
 screen minimap():
     python: 
         if mapManager == None:
-            mapManager = minimapManager(playerData())
-    $frameX, frameY = mapManager.format_map()
+            mapManager = minimapManager()
+    $ frameX, frameY = mapManager.format_map()
     frame align (0.5, 0.5) xsize frameX ysize frameY:
         padding (0,0)
         background None
