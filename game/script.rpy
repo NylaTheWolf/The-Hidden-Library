@@ -18,13 +18,14 @@ label start:
     
     scene bg room
     show atrium 1
-    # call atrium
     # TODO: actually implement the game script.
     $ initial_inventory_setup()
     show screen game_overlay
+
     # show screen HUD
+    # hide atrium # debugging stuff
+
     "You open your eyes to find that your plan worked. You have successfully made it to the hidden library."
-    # show screen game_overlay
     # Player returns here after closing inventory screen
     # "This is to make sure a player can access their inventory at any time during the game."
     # pause
