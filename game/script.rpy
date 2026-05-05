@@ -10,16 +10,22 @@
 
 default playerObj = playerData()
 default mapManager = minimapManager()
+image bg atrium:
+    "images/bg atrium.jpg"
+    xysize(1920, 1080)
 
 label start:
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
     
-    scene bg room
-    show atrium 1
+    scene bg atrium
+    show screen atrium_clickables
     # TODO: actually implement the game script.
+    # show atrium
+
     $ initial_inventory_setup()
+    $ minimap_open = False # whether the minimap is currently open
     show screen game_overlay
 
     # show screen HUD
@@ -57,4 +63,7 @@ screen game_overlay:
     frame align (.5, 0) xsize 500:
         textbutton "Map":
             xalign .5
-            action Show("minimap")
+            if (not minimap_open):
+                action [Show("minimap"), SetVariable("minimap_open", True)]
+            else:
+                action [Hide("minimap"), SetVariable("minimap_open", False)]

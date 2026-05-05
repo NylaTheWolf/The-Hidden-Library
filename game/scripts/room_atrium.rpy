@@ -1,10 +1,16 @@
 define atriumBaseText = "holy shit what a crazy library"
 default atriumText = ""
-
+image bell_idle:
+    # anchor (0.5, 0.5)
+    "images/interactables/bell.png"
+image bell_hover:
+    # anchor (0.5, 0.5)
+    "images/interactables/bell_hover.png"
 
 label atrium:
-    image bg atrium = Transform("atrium 1", zoom=.75)
     scene bg atrium
+    show screen game_overlay
+    show screen atrium_clickables
     python:
         atriumText = atriumBaseText
         if(playerObj.rooms["atrium"].visited):
@@ -13,5 +19,23 @@ label atrium:
 
     "[atriumText]"
 
-    show screen game_overlay
-    call atrium
+
+label investigate:
+    "You investigate the area." (advance=False)
+    show screen atrium_clickables
+
+screen atrium_clickables:
+    modal False
+    imagebutton xsize 200 ysize 200:
+        focus_mask True
+        # xsize 20 ysize 20
+        # (733, 1122, 135, 88)
+        xpos 733 ypos 800
+        anchor (0.5, 0.5)
+        idle "bell_idle"
+        hover "bell_hover"
+        action [Jump("ring_bell")]
+
+label ring_bell:
+    "You ring the bell."
+    jump investigate
