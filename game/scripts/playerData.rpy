@@ -16,12 +16,12 @@ init python:
         def __init__(self):
             self.rooms = { #room names are temporary and subject to change
                 "atrium": copy.deepcopy(roomData("The Atrium", "room_atrium", "bg atrium.jpg", "images/minimap_image/tempAtriumMap.png")),
-                "room2": copy.deepcopy(roomData("Flooded Picture Books", "room2", "room2temp.png", "images/minimap_images/tempRoom2Map.png")),
-                "room3": copy.deepcopy(roomData("The Card Catalogue", "room3", "room3.png", "images/minimap_images/tempRoom3Map.png")),
-                "room3_2": copy.deepcopy(roomData("The Card Catalogue", "room3", "room", "images/minimap_images/tempAtriumMap.png")),
-                "room4": copy.deepcopy(roomData("Ancient Reading Room", "room4", "atrium 1.jpg", "images/minimap_images/tempAtriumMap.png")),
-                "room5": copy.deepcopy(roomData("Natural Sciences", "room5", "atrium 1.jpg", "images/minimap_images/tempAtriumMap.png")),
-                "room6": copy.deepcopy(roomData("The Grand Catalogue", "room6", "room6temp.png", "images/minimap_images/tempRoom6Map.png"))
+                "room2": copy.deepcopy(roomData("Flooded Picture Books", "room2", "bg room 2.png", "images/minimap_images/tempRoom2Map.png")),
+                "room3": copy.deepcopy(roomData("The Card Catalogue", "room3", "bg room 3.png", "images/minimap_images/tempRoom3Map.png")),
+                "room3_2": copy.deepcopy(roomData("The Card Catalogue", "room3", "bg room 3.png", "images/minimap_images/tempAtriumMap.png")),
+                "room4": copy.deepcopy(roomData("Ancient Reading Room", "room4", "bg room 4.png", "images/minimap_images/tempAtriumMap.png")),
+                "room5": copy.deepcopy(roomData("Natural Sciences", "room5", "bg room 5.png", "images/minimap_images/tempAtriumMap.png")),
+                "room6": copy.deepcopy(roomData("The Grand Catalogue", "room6", "bg room 6.png", "images/minimap_images/tempRoom6Map.png"))
             }
             #should both be set whenever a player leaves a room
             self.lastRoom = "atrium"
