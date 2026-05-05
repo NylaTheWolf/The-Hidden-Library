@@ -5,4 +5,4 @@ default investigation_mode = False
 label investigate:
     $ investigation_mode = True
     "You investigate the area." (advance=False)
-    # pause
+    pause

@@ -1,2 +1,2 @@
 label room5:
-    show screen game_overlay
+    scene bg room 5
