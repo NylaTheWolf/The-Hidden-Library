@@ -10,7 +10,8 @@ image bell_hover:
 label atrium:
     scene bg atrium
     show screen game_overlay
-    show screen atrium_clickables
+    $ interactables = room_interact_screens["atrium"]
+    $ renpy.show_screen(interactables)
     python:
         atriumText = atriumBaseText
         if(playerObj.rooms["atrium"].visited):
@@ -18,13 +19,9 @@ label atrium:
         playerObj.rooms["atrium"].visited = True #sets the room's data as being visited
 
     "[atriumText]"
+    jump investigate
 
-
-label investigate:
-    "You investigate the area." (advance=False)
-    show screen atrium_clickables
-
-screen atrium_clickables:
+screen atrium_interactables:
     modal False
     imagebutton xsize 200 ysize 200:
         focus_mask True

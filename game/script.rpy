@@ -14,13 +14,17 @@ image bg atrium:
     "images/bg atrium.jpg"
     xysize(1920, 1080)
 
+default interactables = ""
+
 label start:
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
     
     scene bg atrium
-    show screen atrium_clickables
+    $ interactables = room_interact_screens["atrium"]
+    $ renpy.show_screen(interactables)
+    # show screen interactables
     # TODO: actually implement the game script.
     # show atrium
 

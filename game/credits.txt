@@ -1,3 +1,3 @@
-Inventory's code heavily based on Simple-Renpy-Inventory by Patchmonk. 
+Inventory's code heavily based on Simple-Renpy-Inventory by Patchmonk (https://github.com/Patchmonk/Simple-Renpy-Inventory)
 
 Mothman art by Tori, traced by Em.

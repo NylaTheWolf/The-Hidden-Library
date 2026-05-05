@@ -8,6 +8,7 @@ label letter_read(item):
         hide screen minimap
         window hide
         if item.name == "Notebook":
+            # TODO: space out the top of the screen from the first line
             # special popup for notebook
             n "The first few pages are filled with the information you've collected about the library, with authors and page numbers cited and a side column of personal notes and asides."
             n "An acquaintance once told you that your notes read like an academic paper."

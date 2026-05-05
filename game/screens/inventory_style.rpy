@@ -52,6 +52,3 @@ style inventor_scrollbar:
     left_bar Frame("components/inventory/images/gui/vertical_idle_bar.png", tile=gui.bar_tile)
     right_bar Frame("components/inventory/images/gui/vertical_hover_bar.png", tile=gui.bar_tile)
     thumb Frame("components/inventory/images/gui/vertical_thumb.png", tile=gui.bar_tile)
-
- 
-    

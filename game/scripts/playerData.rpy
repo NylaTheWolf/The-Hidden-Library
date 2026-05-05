@@ -15,13 +15,13 @@ init python:
     class playerData:
         def __init__(self):
             self.rooms = { #room names are temporary and subject to change
-                "atrium": copy.deepcopy(roomData("The Atrium", "room_atrium", "atrium 1.jpg", "images/minimap_image/tempAtriumMap.png")),
-                "room2": copy.deepcopy(roomData("Flooded Picture Books", "room2", "room2temp.png", "images/minimap_image/tempRoom2Map.png")),
-                "room3": copy.deepcopy(roomData("The Card Catalogue", "room3", "atrium 1.jpg", "images/minimap_image/tempAtriumMap.png")),
-                "room3_2": copy.deepcopy(roomData("The Card Catalogue", "room3", "atrium 1.jpg", "images/minimap_image/tempAtriumMap.png")),
-                "room4": copy.deepcopy(roomData("Ancient Reading Room", "room4", "atrium 1.jpg", "images/minimap_image/tempAtriumMap.png")),
-                "room5": copy.deepcopy(roomData("Natural Sciences", "room5", "atrium 1.jpg", "images/minimap_image/tempAtriumMap.png")),
-                "room6": copy.deepcopy(roomData("The Grand Catalogue", "room6", "room6temp.png", "images/minimap_image/tempRoom6Map.png"))
+                "atrium": copy.deepcopy(roomData("The Atrium", "room_atrium", "bg atrium.jpg", "images/minimap_image/tempAtriumMap.png")),
+                "room2": copy.deepcopy(roomData("Flooded Picture Books", "room2", "room2temp.png", "images/minimap_images/tempRoom2Map.png")),
+                "room3": copy.deepcopy(roomData("The Card Catalogue", "room3", "room3.png", "images/minimap_images/tempRoom3Map.png")),
+                "room3_2": copy.deepcopy(roomData("The Card Catalogue", "room3", "room", "images/minimap_images/tempAtriumMap.png")),
+                "room4": copy.deepcopy(roomData("Ancient Reading Room", "room4", "atrium 1.jpg", "images/minimap_images/tempAtriumMap.png")),
+                "room5": copy.deepcopy(roomData("Natural Sciences", "room5", "atrium 1.jpg", "images/minimap_images/tempAtriumMap.png")),
+                "room6": copy.deepcopy(roomData("The Grand Catalogue", "room6", "room6temp.png", "images/minimap_images/tempRoom6Map.png"))
             }
             #should both be set whenever a player leaves a room
             self.lastRoom = "atrium"
@@ -43,6 +43,9 @@ init python:
             self.exitY = y
             self.rooms[self.currentRoom].enterDirection = lastEntry
             self.rooms[self.lastRoom].visited = True
+            # Hide interactables of previous room when moving rooms
+            if lastRoom in room_interact_screens:
+                renpy.hide_screen(room_interact_screens[lastRoom])
             mapManager.update_rooms()
 
     class roomData:
@@ -52,4 +55,5 @@ init python:
             self.imagePath = imagePath
             self.mapImagePath = mapImagePath
             self.visited = False #whether or not the player has been here before. Can be used in dialogue/for the map
-            self.enterDirection = 0 #which direction the player entered from. Used for adding connections to the map            
+            self.enterDirection = 0 #which direction the player entered from. Used for adding connections to the map
+            # self.interactables = interactables
