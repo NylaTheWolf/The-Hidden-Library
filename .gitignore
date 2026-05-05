@@ -219,3 +219,6 @@ files.txt
 
 # End of https://www.toptal.com/developers/gitignore/api/renpy
 .vscode
+game/screens/investigation_screen.rpyc.bak
+game/scripts/room_data.rpyc.bak
+game/scripts/investigation_mode.rpyc.bak
