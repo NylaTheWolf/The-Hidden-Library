@@ -20,6 +20,7 @@ label atrium:
 
     "[atriumText]"
     jump investigate
+    # call investigate
 
 screen atrium_interactables:
     modal False

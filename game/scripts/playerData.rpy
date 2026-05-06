@@ -35,6 +35,7 @@ init python:
             self.relativeRotation = 0
 
         def move_room(self, lastRoom, lastExit, currentRoom, lastEntry, x, y):
+            investigation_mode = False
             self.lastRoom = lastRoom
             self.lastExit = lastExit
             self.currentRoom = currentRoom
