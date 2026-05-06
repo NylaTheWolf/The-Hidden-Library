@@ -43,9 +43,21 @@ label room5_choices:
             "Light a match.":
                 jump light_match
 
-
 label light_match:
-
-
-    # call screen placeholder_interactables
+    # TODO: Sound
+    "You pull your matchbox from your pocket and strike a match. It flares to life between your shaking fingers, casting flickering light onto the shelves and across the walls."
+    "{i}Why does everything look so different in the dark?{/i}"
+    "You sweep your hand in an arc, trying to understand the layout the room relative to where you're standi—"
+    "{i}Fuck!{/i}"
+    "You drop the match. It slips from your fingers without resistance and without ceremony.{w}\n\nThe dry papers on the floor catch immediately."
+    "{i}Wait! No wait I didn't meant to—{/i}"
+    "The heat is unbearable. The flames lick up the walls and the sound of crackling paper fills the room as texts on the higher shelves catch fire."
+    "e. The exposed skin of your face and hands cracks and blisters."
+    "Smoke fills the small space quickly.{w}\n\nYour lungs are a small space, and the smoke fills them too."
+    "You stumble backwards and find a door behind you. You wrench it open, stumble through, and slam it shut."
+    "You gasp a few breaths of non-smoke before you realize you feel fine.{w}Your hands and face are smooth, pain-free skin, and your chest isn't burning."
+    "{i}That was real, right?! It{/i} hurt{i}, it had to be real.{/i}"
+    "{i}Say something! It was real!{/i}"
+    "{i}I know it was.{/i}"
+    call screen placeholder_interactables
     
