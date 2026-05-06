@@ -34,14 +34,27 @@ init python:
             self.relativeY = 0
             self.relativeRotation = 0
 
-        def move_room(self, lastRoom, lastExit, currentRoom, lastEntry, x, y):
+        def move_room(self, lastRoom, lastExit, currentRoom, lastEntry, x, y, rotation):
             investigation_mode = False
             self.lastRoom = lastRoom
             self.lastExit = lastExit
             self.currentRoom = currentRoom
             self.lastEntry = lastEntry
-            self.exitX = x
-            self.exitY = y
+            self.relativeRotation += rotation
+            self.relativeRotation = self.relativeRotation%4
+            print(f"{rotation}, {self.relativeRotation}")
+            if (self.relativeRotation == 0 or self.relativeRotation == 2):
+                print("rotated")
+                self.relativeX += (x * ((self.relativeRotation*-1)+1))
+                self.relativeY += (y * ((self.relativeRotation*-1)+1))
+            else:
+                self.relativeX += x
+                self.relativeY += y
+            
+
+            self.exitX = self.relativeX
+            self.exitY = self.relativeY
+            
             self.rooms[self.currentRoom].enterDirection = lastEntry
             self.rooms[self.lastRoom].visited = True
             # Hide interactables of previous room when moving rooms
