@@ -11,8 +11,8 @@ label investigate:
             renpy.call_screen(interactables)
     # $ interactables = room_interact_screens[playerObj.currentRoom]
     # $ renpy.call_screen(interactables)
+    window hide
     $ investigation_mode = True
-    # window hide
     # i "..." (advance=False)
     # pause
     # if not investigation_mode:

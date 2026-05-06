@@ -22,18 +22,14 @@ label start:
     # images directory to show it.
     
     scene bg atrium
-    $ interactables = room_interact_screens["atrium"]
-    $ renpy.show_screen(interactables)
-    # show screen interactables
+    # $ interactables = room_interact_screens["atrium"]
+    # $ renpy.show_screen(interactables)
+    show screen atrium_interactables
     # TODO: actually implement the game script.
-    # show atrium
 
     $ initial_inventory_setup()
     $ minimap_open = False # whether the minimap is currently open
     show screen game_overlay
-
-    # show screen HUD
-    # hide atrium # debugging stuff
 
     "You open your eyes to find that your plan worked. You have successfully made it to the hidden library."
     # Player returns here after closing inventory screen
