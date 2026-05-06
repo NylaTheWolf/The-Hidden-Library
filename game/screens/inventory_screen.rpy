@@ -2,8 +2,6 @@
 # Inventory screen code/style originally by Patchmonk (https://github.com/Patchmonk/Simple-Renpy-Inventory).
 # Modified by Tori to fit project code and preferences.
 ###
-define n = nvl_narrator
-
 screen inventory_alt():
     modal True
     zorder 101
