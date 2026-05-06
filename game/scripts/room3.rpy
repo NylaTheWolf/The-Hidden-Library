@@ -5,7 +5,7 @@ label room3:
     "The plaque outside this room is no help. The number and letters mean nothing to you."
     "The room itself is laid out in a way that strikes you as utilitarian if the people who would work here were allergic to the concepts of parallel and perpendicular."
     "The card catalog cabinets sit heavy, spread across the room in a zig-zagging fashion with tables positioned in gaps between them."
-    pause(2.0)
+    # pause(2.0)
     "You are alone."
     # TODO: Keep this dialogue up to keep its impact?
     call screen placeholder_interactables
