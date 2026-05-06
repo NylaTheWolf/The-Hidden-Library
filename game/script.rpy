@@ -64,6 +64,11 @@ screen game_overlay:
         textbutton "Map":
             xalign .5
             if (not minimap_open):
-                action [Show("minimap"), SetVariable("minimap_open", True)]
+                action [Show("minimap", moveinbottom), SetVariable("minimap_open", True)]
             else:
-                action [Hide("minimap"), SetVariable("minimap_open", False)]
+                action [Hide("minimap", moveoutbottom), SetVariable("minimap_open", False)]
+    key "m":
+        if (not minimap_open):
+            action [Show("minimap", moveinbottom), SetVariable("minimap_open", True)]
+        else:
+            action [Hide("minimap", moveoutbottom), SetVariable("minimap_open", False)]

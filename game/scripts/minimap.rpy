@@ -209,7 +209,11 @@ init 1 python:
             #theres gotta be a better way of doing this but idk python well enough
             key,b,c,d,xpos,ypos = self.connectionParams
             playerObj.move_room(key,b,c,d,xpos,ypos,self.rotation)
+            #renpy.transition(moveoutbottom)
+            renpy.hide_screen("minimap")
+            
             renpy.call(self.connectionParams[2])
+           
 
 screen minimap():
     python: 
