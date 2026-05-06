@@ -14,6 +14,8 @@ image bg atrium:
     "images/bg atrium.jpg"
     xysize(1920, 1080)
 
+# config.layers
+# $ renpy.add_layer("hud_layer", above="screens")
 default interactables = ""
 
 label start:
@@ -25,11 +27,10 @@ label start:
     # $ interactables = room_interact_screens["atrium"]
     # $ renpy.show_screen(interactables)
     show screen atrium_interactables
-    # TODO: actually implement the game script.
 
     $ initial_inventory_setup()
     $ minimap_open = False # whether the minimap is currently open
-    show screen game_overlay
+    show screen game_overlay onlayer hud_layer
 
     "You open your eyes to find that your plan worked. You have successfully made it to the hidden library."
     # Player returns here after closing inventory screen
@@ -44,7 +45,7 @@ label start:
 screen game_overlay:
     tag hud
     modal False
-    zorder 104
+    # zorder 106
     # TODO: Make a nicer inventory button with an icon.
     # TODO: Add tooltip overlay to items?
     imagebutton auto "inventory_button_%s.png" xsize 150 ysize 60:

@@ -101,6 +101,15 @@ label cryptid_zine:
                 window hide
                 n "{b}{i}The Library of the Lost: Books Lost to Time{/i}{/b}\nBy Lena Ore"
                 # TODO: implement zine
+                n "Stories have been part of human history since we were able to communicate with each other, but the fact of the matter is that, unfortunately, too many of them are lost to time. Think of the Library of Alexandria—so much history lost to fire and warfare."
+                n "To this day, the loss of stories, and thus, the loss of culture, is a persistent issue. Major corporations are fighting against libraries and other archival efforts to preserve out-of-print media under the guise of \"copyright protection.\" Too often, the public are the losers in these fights."
+                n "But what if stories weren’t lost forever? What if, like energy, they are never truly lost, only transformed and transferred. What if, in a place hidden from our eyes, they persist?"
+                nvl clear
+                n "In my hometown, there are whispers of such a place: a place where any written work that is lost is transported to a hidden library."
+                n "This library holds millions of works that have been lost to the winds of time. Growing up, I’ve even heard some people claim that it holds stories from the {i}future{/i}."
+                n "Most people in my hometown talk about the library as if it was just folklore, a campfire story, our own “Bloody Mary” (sorry to the Bloody Mary person back in Vol. 2!)."
+                n "All my life, we’d make jokes like, \"Oh, my left sock must’ve been sucked up by the library!\""
+                n "But there are some people—academics, even—that swear up and down that the library is real. If you go digging, you can find accounts of people claiming that they’ve been to the library or found evidence of its existence."
 
 
                 nvl clear

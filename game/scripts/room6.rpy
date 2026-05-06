@@ -16,6 +16,8 @@ label room6: #grand catalogue
     call room6_interact
 
 label room6_interact:
+    hide screen minimap
+    $ minimap_open = False
     call screen room6_interactables
 
 screen room6_interactables:
