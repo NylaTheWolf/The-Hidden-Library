@@ -41,16 +41,10 @@ label start:
     # return
     # $ renpy.pause()
 
-label loop:
-#     # call screen game_overlay
-    show screen game_overlay
-    "What do you want to do?"
-    "This is to make sure a player can access their inventory at any time during the game."
-    jump loop
-
 screen game_overlay:
+    tag hud
     modal False
-    zorder 100
+    zorder 104
     # TODO: Make a nicer inventory button with an icon.
     # TODO: Add tooltip overlay to items?
     imagebutton auto "inventory_button_%s.png" xsize 150 ysize 60:

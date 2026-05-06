@@ -97,6 +97,7 @@ init 1 python:
                         self.rooms[playerObj.currentRoom],
                         playerObj.relativeRotation*90
                     )
+                    renpy.change_zorder("master", "hud", 105)
                     self.rooms[playerObj.lastRoom].connections[playerObj.lastExit] = current
                     self.connectionList.append(current)
 
