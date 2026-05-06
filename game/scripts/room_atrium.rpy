@@ -11,7 +11,7 @@ label atrium:
     scene bg atrium
     show screen game_overlay
     $ interactables = room_interact_screens["atrium"]
-    $ renpy.show_screen(interactables)
+    $ renpy.call_screen(interactables)
     python:
         atriumText = atriumBaseText
         if(playerObj.rooms["atrium"].visited):
@@ -36,4 +36,4 @@ screen atrium_interactables:
 
 label ring_bell:
     "You ring the bell."
-    jump investigate
+    call screen atrium_interactables

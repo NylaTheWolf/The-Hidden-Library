@@ -4,17 +4,17 @@ default investigation_mode = False
 define i = Character(None, screen="investigation_text")
 
 label investigate:
-    # python:
-        # currentRoom = playerObj.currentRoom
-        # if currentRoom in room_interact_screens:
-        #     interactables = room_interact_screens[playerObj.currentRoom]
-        #     renpy.call_screen(interactables)
+    python:
+        currentRoom = playerObj.currentRoom
+        if currentRoom in room_interact_screens:
+            interactables = room_interact_screens[playerObj.currentRoom]
+            renpy.call_screen(interactables)
     # $ interactables = room_interact_screens[playerObj.currentRoom]
     # $ renpy.call_screen(interactables)
     $ investigation_mode = True
     # window hide
-    i "..." (advance=False)
-    pause
+    # i "..." (advance=False)
+    # pause
     # if not investigation_mode:
     #     return
     # else:

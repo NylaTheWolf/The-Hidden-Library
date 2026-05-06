@@ -18,4 +18,4 @@ screen investigation_text(who, what):
         text what:
             id "what"
             color "#f3f3f3" 
-            xalign 0.5
+            pos (10, 10)
