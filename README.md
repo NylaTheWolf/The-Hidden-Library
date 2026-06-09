@@ -8,3 +8,4 @@ The map is procedurally generated and the game does not have a proper ending. Th
 
 - [RenPy 8.5.2](https://www.renpy.org/)
 - [Simple Inventory System by Patchmonk](https://github.com/Patchmonk/Simple-Renpy-Inventory), modified by Nyla.
+- Programming by Nyla and C3llettuce.
