@@ -41,7 +41,7 @@ label start:
 
     jump atrium
 
-screen game_overlay:
+screen game_overlay():
     tag hud
     modal False
     zorder 106

@@ -4,7 +4,7 @@ default force_match = False
 label room5:
     $ force_match = False
     scene bg room 5
-    show screen placeholder_interactables
+    # show screen placeholder_interactables
     "You enter slowly. Shelves line the oddly angled walls. The room contains no tables or chairs."
     "Instead, a large mound of books and splintered pieces of shelves is heaped against two of the doors."
     "Ahead, the single barricaded door awaits. Dust hangs heavily in the air."

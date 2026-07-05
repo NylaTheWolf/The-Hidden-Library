@@ -38,9 +38,7 @@ label atrium:
             atriumText = "A chill permeates throughout the atrium." # debug sentence.
         playerObj.rooms["atrium"].visited = True #sets the room's data as being visited
     "[atriumText]"
-    
-    # call investigate
-    # window hide
+
     call atrium_interact from _call_atrium_interact
 
 label atrium_interact:
@@ -48,7 +46,7 @@ label atrium_interact:
 
 screen atrium_interactables():
     modal False
-    zorder 50
+    # zorder 50
     imagebutton auto "images/interactables/bell_%s.png":
         focus_mask True
         # anchor (0.5, 0.5)
@@ -113,7 +111,6 @@ label cryptid_zine:
 
                 nvl clear
                 show screen game_overlay onlayer hud_layer
-                # window show
                 jump atrium_interact
             "Leave it.":
                 jump atrium_interact

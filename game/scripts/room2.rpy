@@ -9,6 +9,7 @@ label room2: #the room with water damaged children's books
     scene bg room 2
     $ interactables = room_interact_screens[playerObj.lastRoom]
     $ renpy.hide_screen(interactables)
+    show screen room2_interactables
     "The carpeted floor is thick and soft below your feet. You sink into it gently, taking an inch or so off your already short stature."
     "There is something slightly dizzying about the layout. Are the corners not quite square? Is the floor slanted, just slightly, as it continues towards the shelves?"
     "Roughly bound books and binders line the upper shelves, the lower shelves are stacked with loose paper."
