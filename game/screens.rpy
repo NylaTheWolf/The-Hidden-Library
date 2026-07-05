@@ -607,7 +607,6 @@ screen file_slots(title):
     use game_menu(title):
 
         fixed:
-
             ## This ensures the input will get the enter event before any of the
             ## buttons do.
             order_reverse True
@@ -618,18 +617,21 @@ screen file_slots(title):
 
                 key_events True
                 xalign 0.5
+                yoffset -50
                 action page_name_value.Toggle()
 
                 input:
                     style "page_label_text"
                     value page_name_value
-
+        
             ## The grid of file slots.
             grid gui.file_slot_cols gui.file_slot_rows:
                 style_prefix "slot"
 
                 xalign 0.5
                 yalign 0.5
+                yoffset -40 # moved grid up
+                # yalign 0.2 # moving slots up
 
                 spacing gui.slot_spacing
 
@@ -651,14 +653,17 @@ screen file_slots(title):
                             style "slot_name_text"
 
                         key "save_delete" action FileDelete(slot)
-
+            
+            # null height 50
             ## Buttons to access other pages.
             vbox:
                 style_prefix "page"
+                null height 50
+                yoffset 20
+                spacing 10 # spacing between different buttons
 
                 xalign 0.5
                 yalign 1.0
-
                 hbox:
                     xalign 0.5
 
@@ -694,20 +699,22 @@ screen file_slots(title):
                         textbutton _("Download Sync"):
                             action DownloadSync()
                             xalign 0.5
-
+                
 
 # TODO: Clear input after enter.
-# TODO:
+# TODO allow click to leave?
 # Referenece: https://github.com/ticlock/RenPy_Custom_Save_Load/blob/main/game/custom_save_load.rpy
 screen go_to_page():
     modal True
     style_prefix "input"
     input:
         allow "0123456789"
+        copypaste True
         value VariableInputValue("page")
         if (page != ""):
             action FilePage(page)
     key ["game_menu"] action Hide("go_to_page")
+    # key 
 
 
 style page_label is gui_label
