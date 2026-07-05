@@ -11,5 +11,5 @@ label room3:
     call screen placeholder_interactables
 
 label room3_2: #the version of room 3 entered from the west of room2
-    call room3
+    call room3 from _call_room3
     # call screen placeholder_interactables

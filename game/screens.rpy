@@ -694,10 +694,10 @@ screen file_slots(title):
                         textbutton _("Download Sync"):
                             action DownloadSync()
                             xalign 0.5
-                
+
 
 # TODO: Clear input after enter.
-# TODO: 
+# TODO:
 # Referenece: https://github.com/ticlock/RenPy_Custom_Save_Load/blob/main/game/custom_save_load.rpy
 screen go_to_page():
     modal True

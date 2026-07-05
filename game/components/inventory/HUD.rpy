@@ -1,3 +1,4 @@
+# UNUSED. Came with Patchmonk's code.
 screen HUD():
     frame:
         xpos 0 ypos 0

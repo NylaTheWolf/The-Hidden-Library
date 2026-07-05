@@ -13,7 +13,7 @@ label room6: #grand catalogue
     "A multi-story card catalog within a larger room than the atrium, the scaffolding of which has become part of the walls."
     "Looking up, you catch movement in your peripheral. The room appears to shift slightly, settling itself into sensible right angles and level surfaces.{w} It's not reassuring."
     "...{i}Was it trying to be?{/i}"
-    call room6_interact
+    call room6_interact from _call_room6_interact
 
 label room6_interact:
     hide screen minimap

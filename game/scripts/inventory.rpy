@@ -10,6 +10,7 @@ default inventory = [ item("Box of Matches", "box_of_matches.png", False),
 
 default inventory_slot_count = 21 # Total number of inventory slots available to the player.
 
+# HUD Layer
 init python:
     renpy.add_layer("hud_layer", above="screens")
     class item:

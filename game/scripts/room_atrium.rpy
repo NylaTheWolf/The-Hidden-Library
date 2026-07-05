@@ -41,7 +41,7 @@ label atrium:
     
     # call investigate
     # window hide
-    call atrium_interact
+    call atrium_interact from _call_atrium_interact
 
 label atrium_interact:
     call screen atrium_interactables
