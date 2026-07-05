@@ -4,6 +4,7 @@
 
 init offset = -1
 
+default page = ""
 
 ################################################################################
 ## Styles
@@ -679,6 +680,11 @@ screen file_slots(title):
                     textbutton _(">") action FilePageNext()
                     key "save_page_next" action FilePageNext()
 
+                # Go to page
+                textbutton "Go to page...":
+                    xalign 0.5 yalign 1.0
+                    action Show("go_to_page")
+
                 if config.has_sync:
                     if CurrentScreenName() == "save":
                         textbutton _("Upload Sync"):
@@ -688,6 +694,20 @@ screen file_slots(title):
                         textbutton _("Download Sync"):
                             action DownloadSync()
                             xalign 0.5
+                
+
+# TODO: Clear input after enter.
+# TODO: 
+# Referenece: https://github.com/ticlock/RenPy_Custom_Save_Load/blob/main/game/custom_save_load.rpy
+screen go_to_page():
+    modal True
+    style_prefix "input"
+    input:
+        allow "0123456789"
+        value VariableInputValue("page")
+        if (page != ""):
+            action FilePage(page)
+    key ["game_menu"] action Hide("go_to_page")
 
 
 style page_label is gui_label

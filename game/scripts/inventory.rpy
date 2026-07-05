@@ -63,11 +63,11 @@ init python:
     
                 
 label open_inventory:
-    hide screen game_overlay
+    hide screen game_overlay onlayer hud_layer
     # call screen inventory_screen
     show screen inventory_alt
     # "Back to the game"
-    show screen game_overlay
+    show screen game_overlay onlayer hud_layer
 
 # screen inventory_screen():
 #     modal True

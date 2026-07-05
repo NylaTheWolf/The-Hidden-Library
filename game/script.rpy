@@ -10,13 +10,17 @@
 
 default playerObj = playerData()
 default mapManager = minimapManager()
+default interactables = ""
+
+define minimap_open = False
+define inventory_open = False
+
 image bg atrium:
     "images/bg atrium.jpg"
     xysize(1920, 1080)
-
 # config.layers
 # $ renpy.add_layer("hud_layer", above="screens")
-default interactables = ""
+
 
 label start:
     # Show a background. This uses a placeholder by default, but you can
@@ -30,22 +34,17 @@ label start:
 
     $ initial_inventory_setup()
     $ minimap_open = False # whether the minimap is currently open
+    $ inventory_open = False # whether the inventory is currently open
     show screen game_overlay onlayer hud_layer
 
     "You open your eyes to find that your plan worked. You have successfully made it to the hidden library."
-    # Player returns here after closing inventory screen
-    # "This is to make sure a player can access their inventory at any time during the game."
-    # pause
+
     jump atrium
-    
-    # "Inventory"
-    # return
-    # $ renpy.pause()
 
 screen game_overlay:
     tag hud
     modal False
-    # zorder 106
+    zorder 106
     # TODO: Make a nicer inventory button with an icon.
     # TODO: Add tooltip overlay to items?
     imagebutton auto "inventory_button_%s.png" xsize 150 ysize 60:
@@ -54,7 +53,10 @@ screen game_overlay:
         xanchor 0 yanchor 0
         idle "components/inventory/images/inventory_button.png"
         hover "components/inventory/images/inventory_button_hover.png"
-        action Show("inventory_alt") # opens inventory screen
+        if (not inventory_open):
+            action [Show("inventory_alt"), SetVariable("inventory_open", True)] # opens inventory screen
+        else:
+            action [Hide("inventory_alt"), SetVariable("inventory_open", False)]
     frame align (.5, 0) xsize 500:
         textbutton "Map":
             xalign .5

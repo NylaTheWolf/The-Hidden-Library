@@ -217,6 +217,8 @@ init 1 python:
            
 
 screen minimap():
+    zorder 60
+    modal False # allows to be opened mid-game
     python: 
         if mapManager == None:
             mapManager = minimapManager()
@@ -224,6 +226,7 @@ screen minimap():
     frame align (0.5, 0.5) xsize frameX ysize frameY:
         padding (0,0)
         background Solid("#fff")
+        # TODO: add border
         
         $currentRoom = 0
         for r in mapManager.draw_map():

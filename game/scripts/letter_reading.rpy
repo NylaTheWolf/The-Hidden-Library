@@ -4,9 +4,11 @@ define n = nvl_narrator
 label letter_read(item):
     if (item.is_readable):
         hide screen inventory_alt
+        # inventory will be open by the time you return so don't change the variable
         hide screen show_item_info
-        hide screen game_overlay
+        hide screen game_overlay onlayer hud_layer
         hide screen minimap
+        $ minimap_open = False
         window hide
         if item.name == "Notebook":
             # TODO: space out the top of the screen from the first line
@@ -25,4 +27,4 @@ label letter_read(item):
         
         nvl clear
         show screen inventory_alt # return to inventory
-        show screen game_overlay
+        show screen game_overlay onlayer hud_layer

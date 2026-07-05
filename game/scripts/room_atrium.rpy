@@ -25,7 +25,7 @@ image books_hover:
 
 label atrium:
     scene bg atrium
-    show screen game_overlay
+    show screen game_overlay onlayer hud_layer
     show screen atrium_interactables
     # if (minimap_open):
     #     hide screen minimap
@@ -48,7 +48,7 @@ label atrium_interact:
 
 screen atrium_interactables():
     modal False
-    zorder 102
+    zorder 50
     imagebutton auto "images/interactables/bell_%s.png":
         focus_mask True
         # anchor (0.5, 0.5)
@@ -97,10 +97,9 @@ label cryptid_zine:
                 "You flip through some of the pages. The zine consists of accounts of different urban legends in the submitter’s town."
                 "Some share their own personal experiences with these legends and cryptids, surely hard proof that these legends are, in fact, real."
                 "Each article is accompanied by corresponding sketches. While skimming through the booklet, a particular article catches your attention:"
-                hide screen game_overlay
+                hide screen game_overlay onlayer hud_layer
                 window hide
-                n "{b}{i}The Library of the Lost: Books Lost to Time{/i}{/b}\nBy Lena Ore"
-                # TODO: implement zine
+                n "{b}{i}The Library of the Lost: Books Lost to Time{/i}{/b}\nBy Lena Ore\n"
                 n "Stories have been part of human history since we were able to communicate with each other, but the fact of the matter is that, unfortunately, too many of them are lost to time. Think of the Library of Alexandria—so much history lost to fire and warfare."
                 n "To this day, the loss of stories, and thus, the loss of culture, is a persistent issue. Major corporations are fighting against libraries and other archival efforts to preserve out-of-print media under the guise of \"copyright protection.\" Too often, the public are the losers in these fights."
                 n "But what if stories weren’t lost forever? What if, like energy, they are never truly lost, only transformed and transferred. What if, in a place hidden from our eyes, they persist?"
@@ -113,7 +112,7 @@ label cryptid_zine:
 
 
                 nvl clear
-                show screen game_overlay
+                show screen game_overlay onlayer hud_layer
                 # window show
                 jump atrium_interact
             "Leave it.":

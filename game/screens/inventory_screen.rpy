@@ -13,8 +13,7 @@ screen inventory_alt():
             imagebutton style style["Inv_close_btn"]: # This button closes the inventory screen.
                 idle "Close"
                 hover "Close_hover"
-                action Hide("inventory_alt")
-                # action [Hide("inventory_alt"), Hide("item_iteraction")]
+                action [Hide("inventory_alt"), SetVariable("inventory_open", False)]
             vbox style style["Inv_vbox"]:  # This vbox contains the title and the grid of inventory slots.
                 frame style style["Inv_title_frame"]:
                     text "Inventory" style style["Inv_title"] color "BABABA"
