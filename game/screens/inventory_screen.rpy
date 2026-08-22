@@ -2,12 +2,19 @@
 # Inventory screen code/style originally by Patchmonk (https://github.com/Patchmonk/Simple-Renpy-Inventory).
 # Modified by Tori to fit project code and preferences.
 ###
+default curr_slot = -1
+
 screen inventory_alt():
     modal True
     zorder 101
     hbox:
-        xalign 0.4
-        yalign 0.4
+        xycenter (0.4, 0.5)
+        # pos (1480, 200)
+        # area(1480, 200, 400, 565) is the item info popup
+        # offset -20
+        # anchor ()
+        # xalign 0.4
+        # yalign 0.4
         $ curr_slot = -1
         frame style style["Inventory_frame"]: # This frame contains the inventory buttons and the scrollbar.
             imagebutton style style["Inv_close_btn"]: # This button closes the inventory screen.
@@ -41,8 +48,8 @@ screen inventory_alt():
                                 maximum(155, 155)
                                 if slot < len(inventory): # If the slot is not empty, the slot background image will display.
                                     button:
-                                        hovered [Show("show_item_info", item=inventory[slot]), SetVariable("curr_slot", slot)]
-                                        unhovered Hide("show_item_info")
+                                        hovered [SetVariable("curr_slot", slot), Show("show_item_info", item=inventory[slot])]
+                                        unhovered [Hide("show_item_info")]
                                         action Call("letter_read", item=inventory[slot], from_current=True)
                                         
                                     background Image("components/inventory/images/gui/slot_bg.png") xalign 0.5 yalign 0.5
@@ -64,12 +71,14 @@ screen show_item_info(item):
     frame:
         background None
         # area(1480, 200, 400, 565) seems to align with the inventory frame
-        area(1480, 200, 400, 565)
+        # area(1480, 200, 400, 565)
         # xsize 400 ysize 565
         padding(0,0)
-        add "#000000b3"
+        xsize 400 ysize 580
+        # size (1480, 200)
         # xmargin 10
-        frame:
+        frame: # maybe has instead?
+            add "#000000b3"
             background None
             left_padding 15
             right_padding 5

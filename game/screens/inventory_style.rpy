@@ -6,8 +6,9 @@ style Inventory_frame is frame:
     xsize 1160
     ysize 580
     # xalign 0.5
-    xalign 0.4
-    yalign 0.4
+    align (0.5, 0.5)
+    # xalign 0.4
+    # yalign 0.4
 
 style Inv_close_btn:
     xpos 1115
