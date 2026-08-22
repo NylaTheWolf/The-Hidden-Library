@@ -21,7 +21,7 @@ label room2_interact:
     $ minimap_open = False
     call screen room2_interactables
 
-screen room2_interactables:
+screen room2_interactables():
     imagebutton auto "images/interactables/papers_%s.png":
         focus_mask True
         pos (971, 900)

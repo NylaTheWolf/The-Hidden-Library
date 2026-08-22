@@ -20,7 +20,7 @@ label room6_interact:
     $ minimap_open = False
     call screen room6_interactables
 
-screen room6_interactables:
+screen room6_interactables():
     imagebutton auto "images/interactables/stairs_%s.png":
         focus_mask True
         pos (1140, 160)

@@ -1,6 +1,6 @@
-image decal scratchout = "images/minimap_images/decal1"
-image decal qqq = "images/minimap_images/decal3"
-image decal hallway = "images/minimap_images/decal2"
+# image decal scratchout = "images/minimap_images/decal1"
+# image decal qqq = "images/minimap_images/decal3"
+# image decal hallway = "images/minimap_images/decal2"
 
 init 1 python:
     import copy
