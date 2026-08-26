@@ -15,7 +15,6 @@ screen inventory_alt():
         # anchor ()
         # xalign 0.4
         # yalign 0.4
-        $ curr_slot = -1
         frame style style["Inventory_frame"]: # This frame contains the inventory buttons and the scrollbar.
             imagebutton style style["Inv_close_btn"]: # This button closes the inventory screen.
                 idle "Close"
@@ -48,7 +47,9 @@ screen inventory_alt():
                                 maximum(155, 155)
                                 if slot < len(inventory): # If the slot is not empty, the slot background image will display.
                                     button:
-                                        hovered [SetVariable("curr_slot", slot), Show("show_item_info", item=inventory[slot])]
+                                        # item=inventory[curr_slot] works now
+                                        # changing curr_slot in the screen made it not change.
+                                        hovered [SetVariable("curr_slot", slot), Show("show_item_info", item=inventory[curr_slot])]
                                         unhovered [Hide("show_item_info")]
                                         action Call("letter_read", item=inventory[slot], from_current=True)
                                         
@@ -71,26 +72,27 @@ screen show_item_info(item):
     frame:
         background None
         # area(1480, 200, 400, 565) seems to align with the inventory frame
-        # area(1480, 200, 400, 565)
-        # xsize 400 ysize 565
-        padding(0,0)
         xsize 400 ysize 580
-        # size (1480, 200)
+        xycenter (0.8, 0.5)
+        add "#000000b3"
+    
+        # xsize 400 ysize 565
+        # padding(0,0)
         # xmargin 10
         frame: # maybe has instead?
-            add "#000000b3"
             background None
-            left_padding 15
-            right_padding 5
+            left_padding 30
+            right_padding 30
             ypadding 20
-            if item.description is not None:
-                text item.description yalign 0.0 color "#FFFFFF":
-                    # yoffset 30
-                    # textalign 0.0
-                    if (len(item.description) >= 120):
-                        size 24
-                    else:
-                        size 30
-            else:
-                text "No description available." xalign 0.5 yalign 0.0 color "#FFFFFF":
-                    yoffset 30
+            has fixed:
+                if item.description is not None:
+                    text item.description yalign 0.0 color "#FFFFFF":
+                        # yoffset 30
+                        # textalign 0.0
+                        if (len(item.description) >= 120):
+                            size 24
+                        else:
+                            size 30
+                else:
+                    text "No description available." xalign 0.5 yalign 0.0 color "#FFFFFF":
+                        yoffset 30
